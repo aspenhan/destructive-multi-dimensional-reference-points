@@ -7,3 +7,5 @@
 .sampleimage
 *.html
 localonly/
+sampleimage.png
+example.qmd
