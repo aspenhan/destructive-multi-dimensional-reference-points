@@ -3,8 +3,8 @@
 .Rdata
 .httr-oauth
 .DS_Store
-.example
-.sampleimage
+.example.qmd
+.sampleimage.png
 *.html
 localonly/
 
