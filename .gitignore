@@ -8,5 +8,7 @@
 *.doc
 *.jpg
 *.png
+*.log
+*.zip
 localonly/
 example.qmd
