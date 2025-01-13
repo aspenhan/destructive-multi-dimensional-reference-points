@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 $git rm --cached example
 $git rm--cached sampleimage
 
+=======
+git rm -- cached example.qmd
+>>>>>>> 22fe7e602db2dea4c2931f1c2531c3285fdb140e
 .Rproj.user
 .Rhistory
 .Rdata
