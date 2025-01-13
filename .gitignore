@@ -1,4 +1,4 @@
-$git rm -- cached example.qmd
+$git rm --cached example.qmd
 .Rproj.user
 .Rhistory
 .Rdata
