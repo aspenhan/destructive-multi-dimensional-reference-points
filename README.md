@@ -38,9 +38,10 @@ cognitive complexity effects.
 ### **File Tree**
 
 In the main directory, the "final_project.qmd" file contains the write-up and
-code which generates the research paper. The sub-directory "Data_an_ Analysis"
-contains raw and cleaned/ transformed data, and the code files which analyse the
-data. The sub-directory "Experimental Design" contains materials relating to the
+code which generates the research paper, and the "bibliography.bib" file contains
+the references for the paper. The sub-directory "Data_and_ Analysis" contains
+raw and cleaned/ transformed data, and the code files which analyse the data.
+The sub-directory "Experimental Design" contains materials relating to the
 experimental design, implementation, and a link to the survey itself.
 
 
