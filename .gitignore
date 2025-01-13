@@ -8,3 +8,4 @@
 *.html
 localonly/
 
+$git rm -- cached example.qmd
