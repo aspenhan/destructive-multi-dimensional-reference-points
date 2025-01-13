@@ -1,4 +1,5 @@
-*This is the final project.*
+*Too hard to get: the role of probabilistic expectations and cognitive complexity
+in reference point effects*
 
 # **Project Overview**
 
