@@ -6,3 +6,5 @@
 .example
 localonly/
 *.png
+
+git rm --cached
