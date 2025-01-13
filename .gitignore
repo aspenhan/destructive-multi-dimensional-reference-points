@@ -4,6 +4,9 @@
 .httr-oauth
 .DS_Store
 *.html
+*.pdf
+*.doc
+*.jpg
+*.png
 localonly/
-sampleimage.png
 example.qmd
