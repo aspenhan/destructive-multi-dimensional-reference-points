@@ -1,3 +1,4 @@
+git rm -- cached example.qmd
 .Rproj.user
 .Rhistory
 .Rdata
@@ -6,5 +7,3 @@
 .example
 localonly/
 *.png
-
-git rm -- cached example.qmd
