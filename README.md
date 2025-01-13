@@ -1,7 +1,6 @@
-*Too hard to get: the role of probabilistic expectations and cognitive complexity
-in reference point effects*
+## ***Too hard to get: the role of probabilistic expectations and cognitive complexity in reference point effects***
 
-# **Project Overview**
+### **Project Overview**
 
 My research seeks to investigate the effects of conflicting reference points
 across different dimensions of utility on effort exertion. Reference-dependent
@@ -22,7 +21,7 @@ both targets and the cognitive complexity required to reconcile them. Then, I
 will analyse the likelihood of target achievements across the different groups
 to verify my proposed effects.
 
-# **Data Description**
+### **Data Description**
 
 The raw data set will be at the individual subject level and contain data on
 each subject's treatment group, task performance measures (i.e. number of tasks
@@ -36,7 +35,7 @@ aversion levels for each subject. Finally, I will run multinomial logistic
 regression to verify my hypotheses about the probabilistic expectations and
 cognitive complexity effects.
 
-# **File Tree**
+### **File Tree**
 
 In the main directory, the "final_project.qmd" file contains the write-up and
 code which generates the research paper. The sub-directory "Data_an_ Analysis"
