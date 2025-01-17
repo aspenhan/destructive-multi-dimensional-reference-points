@@ -1,7 +1,25 @@
 ---
-title: "Final project"
-format: pdf
-editor: visual
+title: "MA Thesis"
+author: "Aspen Han"
+date: today
+format:
+  pdf:
+    fig-width: 6
+    fig-asp: 0.618
+    fig-align: center
+    
+editor: source
+
+execute:
+  echo: false
+  
+knitr:
+  opts_chunk:
+    out-width: "75%"
+    
+bibliography: bibliography.bib
+csl: <insert desired citation style>
+
 ---
 
 ## Quarto
@@ -13,14 +31,18 @@ Quarto enables you to weave together content and executable code into a finished
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-1 + 1
+#| label: setup
+#| include: false
+
 ```
 
 You can add options to executable code like this
 
 ```{r}
-#| echo: false
+#| label: raw data
 2 * 2
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
+
+
