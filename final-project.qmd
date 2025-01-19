@@ -1,5 +1,5 @@
 ---
-title: "MA Thesis"
+title: "MA Thesis Paper"
 author: "Aspen Han"
 date: today
 format:
