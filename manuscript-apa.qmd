@@ -1,48 +1,166 @@
 ---
-title: "MA Thesis Paper"
-author: "Aspen Han"
-date: today
+title: "Too hard to get: the role of probabilistic expectations and cognitive complexity in destructive multi-dimensional reference points"
+shorttitle: "Destructive multi-dimensional reference points"
+author:
+  - name: Aspen Han
+    corresponding: true
+    orcid: 0000-0003-1474-7968
+    email: xiangyuhan@uchicago.edu
+    affiliations:
+      - name: University of Chicago
+        department: Department of Economics, Division of Social Sciences
+        address:  1126 E. 59th Street
+        city: Chicago
+        region: IL
+        postal-code: 60637
+author-note:
+  disclosures:
+    
+    study-registration: null
+    data-sharing: null
+    related-report: null
+    conflict-of-interest: null
+    financial-support: null
+    authorship-agreements: null
+    gratitude: null
+abstract: "This is the abstract. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+keywords: [reference points, multi-dimensional, conflicting]
+bibliography: bibliography.bib
+floatsintext: true
+editor_options: 
+  chunk_output_type: console
+knitr:
+  opts_chunk:
+    
+    out.width: "75%"
 format:
-  pdf:
+  
+  apaquarto-pdf:
+    documentmode: man
+    keep-tex: true
+    list-of-figures: true
     fig-width: 6
     fig-asp: 0.618
     fig-align: center
-    
-editor: source
-
-execute:
-  echo: false
-  
-knitr:
-  opts_chunk:
-    out-width: "75%"
-    
-bibliography: bibliography.bib
-csl: <insert desired citation style>
-
+    include-in-header:
+      #remove extra space between main list and sublist
+      text: |
+        \usepackage{enumitem}
+        \setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+        \setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
 ---
-
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
 #| label: setup
 #| include: false
 
+# Load required packages; install them with command below if not already done so, where package name is the argument to the library function
+# install.package("<package name>")
+
+## Data reading and writing, transformation, and visualisation
+library(tidyverse)
+library(readxl) #read excel data
+library(reshape2) #alternative to tidyr though it is retired
+library(broom) #turns function output into tidy tibbles
+
+
+## Statistical inference and regression analysis
+library(car) #basic regression analysis
+library(sandwich) #estimate robust errors
+library(estimatr) #run robust and other more complex regressions and analysis
+library(nnet) #run multinomial logistic regressions
+library(fixest) #run fixed effects regressions
+library(lmtest) #run diagnostic tests on linear models
+
+## Tables
+library(texreg) #make regression tables
+library(gtsummary) #make summary stats tables
+library(gt) #make general tables
+
+#Alternatively, can use load packages using require(), e.g.
+# require(tidyverse)
+
+#Note that using require() will throw a warning but still execute code afterwards, which can create further errors, whereas using library() will throw a warning and stop running the code, which is preferred
+
 ```
 
-You can add options to executable code like this
+# 1. Introduction
+
+
+
+# 2. Methodology
+
+I outline my identification strategy to answer my research question in three parts
+
+* Theoretical specification
+* Experimental design
+* Context, sample, and data
+
+## A. Theoretical specification
+
+
+
+## B. Experimental design
+
+
+
+## C. Context, sample, and data
+
+
+
+# 3. Analysis and results
+
+I provide an overview of key features in the experimental data before delving deeper into probability analysis to answer my research questions.
+
+## A. Data overview
 
 ```{r}
-#| label: raw data
-2 * 2
+#| label: Default-plot-themes
+
+#Set default theme for ggplot; serif is times new roman
+
+def_theme <- theme(plot.title = element_text(family = "serif", size = 15, hjust = 0.5),
+                  axis.title = element_text(family = "serif", size = 13),
+                  axis.text = element_text(family = "serif", size = 11),
+                  strip.text.x = element_text(family = "serif", size = 12),
+                  strip.text.y = element_text(family = "serif", size = 12, angle = 0),
+                  legend.title = element_text(family = "serif", size = 12),
+                  legend.text = element_text(family = "serif", size = 11))
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## B. Probability analysis
 
 
+
+# 4. Discussion
+
+
+
+## Relationship with covariates
+
+
+
+## Robustness checks
+
+
+
+## Limitations
+
+
+
+# 5. Conclusion
+
+
+
+\newpage
+
+# Bibliography
+
+::: {#refs}
+:::
+
+\newpage
+
+# Appendix
+
+## I. Derivation of reference-dependent on-the-job search model
