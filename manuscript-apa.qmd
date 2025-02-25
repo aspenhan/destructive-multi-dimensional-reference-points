@@ -1,6 +1,7 @@
 ---
 title: "Too hard to get: the role of probabilistic expectations and cognitive complexity in destructive multi-dimensional reference points"
 shorttitle: "Destructive multi-dimensional reference points"
+
 author:
   - name: Aspen Han
     corresponding: true
@@ -13,9 +14,9 @@ author:
         city: Chicago
         region: IL
         postal-code: 60637
+
 author-note:
   disclosures:
-    
     study-registration: null
     data-sharing: null
     related-report: null
@@ -23,18 +24,23 @@ author-note:
     financial-support: null
     authorship-agreements: null
     gratitude: null
+    
 abstract: "This is the abstract. Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+
 keywords: [reference points, multi-dimensional, conflicting]
+
 bibliography: bibliography.bib
+
 floatsintext: true
+
 editor_options: 
   chunk_output_type: console
+
 knitr:
   opts_chunk:
-    
     out.width: "75%"
+    
 format:
-  
   apaquarto-pdf:
     documentmode: man
     keep-tex: true
@@ -43,7 +49,6 @@ format:
     fig-asp: 0.618
     fig-align: center
     include-in-header:
-      #remove extra space between main list and sublist
       text: |
         \usepackage{enumitem}
         \setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
