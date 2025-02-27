@@ -50,6 +50,7 @@ format:
     fig-align: center
     include-in-header:
       text: |
+        \usepackage{amsmath}
         \usepackage{enumitem}
         \setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
         \setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
@@ -120,7 +121,6 @@ Other limitations of the lab context>
 Preliminary:
 Overall, I believe my research can provide a deeper understanding of how agents integrate reference points across different dimensions into their decision-making. This is highly relevant since people are often confronted with multiple rather than singular reference points, whether when making decisions about labor supply in the workplace, school enrolment, or consumption allocation more generally. Returning to the opening example, the study can directly inform the design of targets-based incentive structures in the workplace to more effectively induce higher productivity (according to given organisational objectives). Targets should push people to strive for more but should be realistic and comprehensible. Validation of appended model (1) would suggest that management should be mindful of complementarities and conflicts across different performance dimensions when setting targets in each, weighting how important each is to the organization and how much trade-off in other dimensions each entails to arrive at some optimal matrix of targets. It also shows why and how visualization and planning exercises for target achievement can make targets more effective motivators by raising the expected probability of achievement. Verification of appended model (2) would suggest that management should set targets with clear demands, and when they are in discrete dimensions, explain how they line up so that workers can easily understand and respond. My work will also have broader implications for policies using reference points to guide decision-making in other markets such as nudge-based policies and marketing.>
 
-
 # 2. Methodology
 
 ## A. Experimental design
@@ -143,20 +143,24 @@ Subjects were randomly assigned to four treatment groups, which varied in terms 
 
 In the experiment, the agent works on a task where he has to exert effort $e$, and has reference points $N$ for the number of tasks completed per minute, and $Q$ for the percentage of mistakes made. $e$ is split into $e_1$, effort in speed, and $e_2$, effort in accuracy. First, consider a simplified version where outcomes are deterministic, reference points are degenerate, and gain-loss utilities are linear with constant loss aversion. Under the KR model, expected utility from effort across two dimensions is given by the KR model as
 
-$$U = p(e_1, e_2) - c(e_1, e_2) +
-  μ_1[(n(e_1 )-N)\mathbb{I}(n<N) + λ_1(n(e_1)-N)\mathbb{I}(n≤N)] +
-  μ_2[(Q-q(e_2))\mathbb{I}(q<Q) + λ_2(Q-q(e_2))\mathbb{I}(q≥Q)]$$
-  
+\begin{align}
+U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\ 
+    &\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
+    &\mu_2[(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q)] \nonumber
+\end{align}
+
 $p(e)$ is the level payoff from effort exertion, summed across both dimensions. $c(e)$ is the cost of effort. $μ_1[(n(e_1 )-N)\mathbb{I}(n<N) + λ_1(n(e_1)-N)\mathbb{I}(n≤N)]$ is the gain-loss utility in the speed dimension, where $μ_1≥0$ is the gain-loss parameter, $λ≥1$ is the loss aversion parameter, and $\mathbb{I}(.)$ is an indicator function equaling 1 when the condition in the bracket holds and 0 otherwise. $μ_2 [(Q-q(e_2))\mathbb{I}(q<Q) + λ_2(Q-q(e_2))\mathbb{I}(q≥Q) ] )]$ is analogously defined for the accuracy dimension.
 
 To account for the role of probabilistic expectations and cognitive complexity in reference point effects, I propose appended model
 
-$$U = p(e_1, e_2) - c(e_1, e_2) + \\
-  E[\mathbb{P}(\{n≥N-ε\}∩\{q≤Q+ε\}] \times \theta \times \\
-  \{μ_1[(n(e_1 )-N)\mathbb{I}(n<N) + λ_1(n(e_1)-N)\mathbb{I}(n≤N)] + \\
-  μ_2[(Q-q(e_2))\mathbb{I}(q<Q) + λ_2(Q-q(e_2))\mathbb{I}(q≥Q)]\}$$
+\begin{align}
+U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
+    &E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+ε\}] \times \theta \times \nonumber \\
+    &\{\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
+    &\mu_2[(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q)]\} \nonumber
+\end{align}
 
-The first additional term $E[\mathbb{P}(\{n≥N-ε\}∩\{q≤Q+ε\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta≥0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
+The first additional term $E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+ε\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta≥0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
 
 Now extending the two models to the experimental context with strict and lenient assessment criteria... 
 
@@ -164,15 +168,15 @@ Thus, the two models provide distinct predictions for optimal effort provision i
 
 [^1]: Refer to appendix for formal derivation of the first-order conditions
 
-KR model prediction:
+KR model predictions:
 
-KR1. Treatments 2 and 4 will have similar positive effects on the probability of achieving any target.
-KR2. Treatment 3 should have a larger positive effect than treatment 2 (and 4) for achieving both targets or for achieving $Q$ but not $N$.
+* Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. --- (KR1)
+* Treatment 3 should have a larger positive effect than treatment 2 (and 4) for achieving both targets or for achieving $Q$ but not $N$. --- (KR2)
 
 Appended model predictions:
 
-A1. Treatment 3 should have lower positive effect for achieving any target than treatment 2.
-A2. Treatment 4 should have a lower positive effect for achieving any targets than treatment 2. 
+* Treatment 3 should have lower positive effect for achieving any target than treatment 2. --- (A1)
+* Treatment 4 should have a lower positive effect for achieving any targets than treatment 2. --- (A2)
 
 # 3. Analysis and results
 
