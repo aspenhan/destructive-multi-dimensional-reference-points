@@ -1,14 +1,22 @@
+# Local R project and system files
 .Rproj.user
 .Rhistory
 .Rdata
 .httr-oauth
 .DS_Store
+
+# Unnecessary rendered output from quarto manuscript
 *.html
+*.tex
 *.pdf
 *.doc
 *.jpg
 *.png
 *.log
 *.zip
+
+# Exceptions
+
+# Private and other unneccessary files
 localonly/
-example.qmd
+
