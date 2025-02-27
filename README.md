@@ -1,6 +1,6 @@
 ## ***Too hard to get: the role of probabilistic expectations and cognitive complexity in reference point effects***
 
-### **Project Overview**
+### **Research Overview**
 
 My research seeks to investigate the effects of conflicting reference points
 across different dimensions of utility on effort exertion. Reference-dependent
@@ -35,14 +35,18 @@ aversion levels for each subject. Finally, I will run multinomial logistic
 regression to verify my hypotheses about the probabilistic expectations and
 cognitive complexity effects.
 
-### **File Tree**
+### **Main Analysis and Findings**
 
-In the main directory, the "final_project.qmd" file contains the write-up and
-code which generates the research paper, and the "bibliography.bib" file contains
-the references for the paper. The sub-directory "Data_and_ Analysis" contains
-raw and cleaned/ transformed data, and the code files which analyse the data.
-The sub-directory "Experimental Design" contains materials relating to the
-experimental design, implementation, and a link to the survey itself.
+## **Repository structure**
 
+* _extensions: contains quarto extensions for publication formats
+    * aog-article: extension for generic scholarly article format
+    * wjschne/apaquarto: extension for APA format
+    * elsevier: extension for Elsevier journal format
+* data-raw: contains original de-identified data files obtained from surveys, firm records, and administrative databases
+* data-clean: contains cleaned data files and the relevant code files which performed the cleaning (e.g. fix structure, syntax, and typos, remove unnecessary information)
+* empirical-analysis: contains code files for performing more complex analysis
+* manuscript-apa.qmd: reproducible research paper manuscript in APA format
+* manuscript-apa.pdf: knitted research paper pdf in APA format
 
 
