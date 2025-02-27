@@ -23,18 +23,6 @@ to verify my proposed effects.
 
 ### **Data Description**
 
-The raw data set will be at the individual subject level and contain data on
-each subject's treatment group, task performance measures (i.e. number of tasks
-completed per minute, number of mistakes made, covariates (e.g. age, gender, 
-education background), and responses to a survey about loss aversion. I will
-transform the raw task performance measures into a categorical variable for
-whether the subject achieved no targets, achieved the speed but not the accuracy
-target, vice-versa, and achieved both targets, which is the dependent/ outcome
-variable. I will also use the loss aversion survey responses to compute the loss
-aversion levels for each subject. Finally, I will run multinomial logistic
-regression to verify my hypotheses about the probabilistic expectations and
-cognitive complexity effects.
-
 ### **Main Analysis and Findings**
 
 ## **Repository structure**
