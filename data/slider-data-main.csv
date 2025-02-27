@@ -1,6 +1,6 @@
 treatment,task_per_min,task_total,mistake_total,task_duration,total_duration,finished,gender,age,income,education,economics
-1,5.1315789473684210526,26,1,304,741,True,Female,26,NA,4,No
-4,7.0819672131147540984,36,9,305,443,True,Female,24,NA,College/ university degree or equivalent,No
-3,5.1757188498402555912,27,0,313,381,True,NA,NA,NA,NA,NA
-2,5.225806451612903226,27,1,310,1278,True,Female,23,"75,000 - 120,000",College/ university degree or equivalent,Yes
-4,3.9867109634551495014,20,1,301,1842,True,Male,22,"Over 200,000",College/ university degree or equivalent,Yes
+1,5.131578947368421,26,1,304,741,TRUE,Female,26,NA,4,No
+4,7.081967213114754,36,9,305,443,TRUE,Female,24,NA,College/ university degree or equivalent,No
+3,5.175718849840256,27,0,313,381,TRUE,NA,NA,NA,NA,NA
+2,5.225806451612903,27,1,310,1278,TRUE,Female,23,"75,000 - 120,000",College/ university degree or equivalent,Yes
+4,3.9867109634551494,20,1,301,1842,TRUE,Male,22,"Over 200,000",College/ university degree or equivalent,Yes
