@@ -31,9 +31,7 @@ to verify my proposed effects.
     * aog-article: extension for generic scholarly article format
     * wjschne/apaquarto: extension for APA format
     * elsevier: extension for Elsevier journal format
-* data-raw: contains original de-identified data files obtained from surveys, firm records, and administrative databases
-* data-clean: contains cleaned data files and the relevant code files which performed the cleaning (e.g. fix structure, syntax, and typos, remove unnecessary information)
-* empirical-analysis: contains code files for performing more complex analysis
+* data: contains raw and processed data files, along with associated coding files used for data cleaning and wrangled
 * manuscript-apa.qmd: reproducible research paper manuscript in APA format
 * manuscript-apa.pdf: knitted research paper pdf in APA format
 
