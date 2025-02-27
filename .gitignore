@@ -16,6 +16,7 @@
 *.zip
 
 # Exceptions
+!manuscript-apa.pdf
 
 # Private and other unneccessary files
 localonly/
