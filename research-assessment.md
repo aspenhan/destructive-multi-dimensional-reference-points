@@ -42,14 +42,12 @@ Filename of manuscript .qmd: manuscript-apa.qmd
 
 Filename of knitted .pdf: manuscript-apa.pdf
 
+
 ## AI Statement
 
 Describe whether and how you used AI/LLMs when completing this project: Yes, I used chatgpt-4o for modifying and debuggin code.
 
 Optionally (for engagement points) reflect on your use of AI:
-
-
-
 
 
 ## Overall requirements
@@ -158,7 +156,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. User-defined function(s) run(s) without error and produces expected output in at least 2 contexts
     3. Functions are well-documented with comments
 
-        -   [ ] Objective attempt
+        -   [ ] Objective attempt *Not sure what function I can define for my research as I don't foresee needing any
         -   [ ] Objective met
         -   Grader comments:
 
@@ -167,7 +165,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Uses conditional in multiple contexts, including dplyr pipelines
     2. Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`)
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
         
@@ -178,7 +176,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Writes out intermediate and/or final datasets in code chunks or sourced scripts
     3. Uses only relative paths that run without error when repo is cloned
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -188,7 +186,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses at least 1 `tidyr` function in a data transformation pipeline
     3. Combines `dplyr` and `tidyr` functions in a data transformation pipeline
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -197,7 +195,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Uses at least 2 unique `stringr` functions 
     2. Uses `stringr` functions in a data transformation pipeline
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -207,7 +205,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses `forcats` functions in a data transformation pipeline
     - NOTE: Though they are base R functions, `factor()` and `levels()` can be used to meet this objective as long as they are used in a way that demonstrates the same skills as `forcats` functions, which should involve including optional arguments
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
