@@ -98,7 +98,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3.  Does not have duplicate/redundant elements
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments: 
 
 2.  Maintain an informative and up-to-date README.md
@@ -107,8 +107,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Outlines the repo structure with file tree or similar
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments:
+        -   [x] Objective met
+        -   Grader comments: Giving you the point, but note that your readme does not use markdown headings correctly. You should not add text styling (like bold or italics) to headings; the point of headings is that it is styled automatically by markdown.
 
 3.  integrate a GitHub repo with an R studio project, including .gitignore file
 
@@ -116,7 +116,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  .gitingore comprehensively excludes unnecessary, private, and very large files and are commented appropriately
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 4.  effectively use version control
@@ -125,7 +125,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2.  Relies on document revisions rather than manually created new versions
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 ### R programming
@@ -139,7 +139,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: 
+            1. Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out, then those packages loaded with library() (not commented out)
+            2. Refer to the d2mr resources page for a list of the packages you can load without a commented out install line.
         
 6.  Use arithmetic, comparison, and logical operators
 
@@ -168,6 +170,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
+            1. I see `where()` in your data cleaning .R script but no others
         
 
 9.  Use `readr` functions to read in and write out data
@@ -178,7 +181,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: Your use of main-data-cleaning.R is a little odd. 
+            1. You read in a file and write out to the same file, which is generally not a good idea, since you can lose original data this way, and scripts won't work on processed data the same way they would have worked on raw data.
+            2. You don't need to do a whole read-in/write-out thing in a soucred script. The .R script you have now is really a stand-alone script. It doesn't need to be run every time the .qmd is knit. You should just have that run when you need to update data, then have the .qmd read in the data from the file you wrote out to.
 
 10. Use `dplyr` and `tidyr` functions to transform data
 
@@ -187,7 +192,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Combines `dplyr` and `tidyr` functions in a data transformation pipeline
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 11. Use `stringr` functions to work with string variables
@@ -196,7 +201,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses `stringr` functions in a data transformation pipeline
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 12. Use `forcats` functions to work with factor variables
@@ -206,8 +211,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     - NOTE: Though they are base R functions, `factor()` and `levels()` can be used to meet this objective as long as they are used in a way that demonstrates the same skills as `forcats` functions, which should involve including optional arguments
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments:
+        -   [x] Objective met
+        -   Grader comments: 
 
 ### Data visualization with ggplot2
 
@@ -295,7 +300,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. May use `cite_r()` to cite R and R packages
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 21. Render an APA7 references page from a .bib file
@@ -308,7 +313,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: for apa formatting it needs to be called "References"
 
 ### Notebooks and code chunks
 
@@ -321,7 +326,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments: 
+        -   Grader comments: it will require substantially more than 2 chunks to demonstrate the best practices above
         
 23. Use code chunks to set up a quarto document
 
@@ -332,7 +337,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: see comment above about data read-in and sourced scripts; the readin (or source) should be a setup chunk at the beginning of the document
         
 24. Render publication-quality tables, figures, and images from code chunks
 
@@ -367,7 +372,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: you've got everything except an abstract. once you fill that in, you'll meet this objective.
         
 27. Use quarto R Markdown to compose an academic manuscript
 
@@ -378,7 +383,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     - NOTE: This is going to be one of the most flexible objectives to demonstrate.  You need to demonstrate a range of markdown skills and use them to make a readable, informative manuscript. Hitting the four points above should do that, but you can use your judgment about what kind of markdown features will best serve your project. No matter what, you should use markdown to follow APA7 guidelines.
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 28. Use inline R variables to replace static text
@@ -409,6 +414,11 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:        
+            1. Level 1 headings are reserved for # Abstract, # Methods, # Results, # Discussion, # References, and # Appendix.
+            2. In APA7, there is no heading before the introduction.
+            3. Do not number sections or subsections
+            4. To get this point you'll need to include sufficient narrative text in all sections
+
    
 
 ## Reflection (Optional)
@@ -438,8 +448,8 @@ Alternatively/additionally in mind some of the suggested ways to earn engagement
 
 All final projects are graded by Dr. Dowling. You will see your grade on Canvas separated into two categories: objective points and engagement points.
 
--   **Objective points:** #/30
--   **Engagement points:** #/10
--   **Total points:** #/40
+-   **Objective points:** 9/30
+-   **Engagement points:** 2/10
+-   **Total points:** 11/40
 
-**Comments:**
+**Comments:** Nice work! See comments above for details about how to get the points you missed. In general, once you actually add the content itself it will be easier to demonstrate the objectives.
