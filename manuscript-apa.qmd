@@ -1,7 +1,6 @@
 ---
 title: "Too hard to get: the role of probabilistic expectations and cognitive complexity in destructive multi-dimensional reference points"
 shorttitle: "Destructive multi-dimensional reference points"
-
 author:
   - name: Aspen Han
     corresponding: true
@@ -14,7 +13,6 @@ author:
         city: Chicago
         region: IL
         postal-code: 60637
-
 author-note:
   disclosures:
     study-registration: null
@@ -24,22 +22,17 @@ author-note:
     financial-support: null
     authorship-agreements: null
     gratitude: null
-    
 abstract: "This is the abstract."
-
 keywords: [conflicting multi-dimensional reference points, probabilistic expectations, cognitive complexity]
-
 bibliography: bibliography.bib
-
-floatsintext: true
-
 editor_options: 
   chunk_output_type: console
-
 knitr:
   opts_chunk:
     out.width: "75%"
-    
+execute:
+  echo: false
+floatsintext: true
 format:
   apaquarto-pdf:
     documentmode: man
@@ -51,6 +44,7 @@ format:
     include-in-header:
       text: |
         \usepackage{amsmath}
+        \usepackage{amssymb}
         \usepackage{enumitem}
         \setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
         \setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
@@ -60,8 +54,21 @@ format:
 #| label: setup
 #| include: false
 
-# Load required packages; install them with command below if not already done so, where package name is the argument to the library function
-# install.package("<package name>") e.g. install.package("tidyverse")
+# Load required packages; install them by uncommenting commands below if not already installed
+# install.package("tidyverse")
+# install.package("readxl")
+# install.package("reshape2")
+# install.package("broom")
+# install.package("DescTools")
+# install.package("car")
+# install.package("sandwich")
+# install.package("estimatr")
+# install.package("nnet")
+# install.package("fixest")
+# install.package("lmtest")
+# install.package("texreg")
+# install.package("gtsummary")
+# install.package("gt")
 
 ## Data reading and writing, transformation, and visualisation
 library(tidyverse)
@@ -84,14 +91,12 @@ library(texreg) #make regression tables
 library(gtsummary) #make summary stats tables
 library(gt) #make general tables
 
-#Alternatively, can use load packages using require(), e.g.
+#Alternatively, can use jointly install and load packages using require(), e.g.
 # require(tidyverse)
 
 #Note that using require() will throw a warning but still execute code afterwards, which can create further errors, whereas using library() will throw a warning and stop running the code, which is preferred
 
 ```
-
-# 1. Introduction
 
 Consider the employee of a firm whose performance is evaluated against targets across various performance dimensions (e.g. production speed, accuracy, quality etc). For example, an assembly line worker in an electronics manufacturing plant could be subject to targets on the number of components made per hour (speed), the proportion of defective components made (accuracy), and the average durability of components made (quality). Similarly in the service sector, an Uber driver could be evaluated on the number of rides provided per month, average mileage per unit time, and the average customer satisfaction rating.  It is apparent that tensions between these performance dimensions can surface, which can affect the targets' effectiveness as motivators. The emphasis for consistency and complementarity between different performance dimensions, including targets set in each, is strongly echoed in operations and general management literature [e.g. @hayes.1984.restoringour; @hayes.1978.howshould; @skinner.1974.focusedfactory; @skinner.1996.manufacturingstrategy; @swamidass.2000.focusedfactory]. I seek to examine this concept within economics. Targets can and have been integrated into the framework of expectations-based reference points [@heath.1999.goalsreference; @vonrechenberg.2016.goalsreference], a growing body of research within behavioral economics. However, empirical studies have mainly examined the effects of reference points uni-dimensionally, though theoretical models encompassing multi-dimensional reference points exist. Thus, I wish to investigate the mechanisms through which reference points interact across dimensions within this economic framework, specifically answering the following research questions:
 
@@ -104,64 +109,88 @@ Beyond the hypothetical examples and theoretical framework, my research builds u
 
 I proposed two main explanations: agents are unresponsive to reference points when they perceive the probability of being able to achieve them all in tandem to be low, or when they find it cognitively complex to reconcile the reference points, and these problems arise when reference points across multiple dimensions conflict. We can easily append these features to the KR model, which would alter the first-order conditions predicting optimal effort provision such that they align with the experimental results.
 
-I designed an experiment to test these propositions. I elected for a laboratory experimental methodology as I want to clearly identify the decision-making mechanisms through which reference points affect effort provision, which is difficult to accomplish with observational data where there are many confounds and more clearly elicited in the controlled environment of an experiment, and resource constraints restrict it to a laboratory setting.
+I designed an experiment to test these propositions. I elected for a laboratory experimental methodology as I wanted to clearly identify the decision-making mechanisms through which reference points affect effort provision, which is difficult to accomplish with observational data where there are many confounds and more clearly elicited in the controlled environment of an experiment, and resource constraints restrict it to a laboratory setting.
 
-<main findings aftering running actual experiment and analysing its data>
+<!--
+main findings aftering running actual experiment and analysing its data
+-->
 
-<limitations of design, implementation, analysis, and findings
+<!--
+limitations of design, implementation, analysis, and findings
 
 Preliminary:
 
 A portion of the experimental sample will be drawn from undergraduate classes in the spring quarter, for which incentive will likely be class credit instead of money due to budgetary constraints. All participants are awarded a fixed amount of credit just for participation in the experiment regardless of the amount of effort exerted. This is not a problem within the experiment as it is concerned with intrinsic effort motivation from gain-loss utilities associated with the reference points which is independent of external incentives. However, it will weaken the external validity of the findings since they draw upon a specific population and context (i.e. undergraduate students completing the task for course credit). Nevertheless, such an experiment can still provide interesting insights on the effort provision decision with respect to multi-dimensional target achievement.
 
-Other limitations of the lab context>
+-->
 
-<implications of findings and relations to broader literature
+<!--
+Implications of findings and relations to broader literature
 
 Preliminary:
-Overall, I believe my research can provide a deeper understanding of how agents integrate reference points across different dimensions into their decision-making. This is highly relevant since people are often confronted with multiple rather than singular reference points, whether when making decisions about labor supply in the workplace, school enrolment, or consumption allocation more generally. Returning to the opening example, the study can directly inform the design of targets-based incentive structures in the workplace to more effectively induce higher productivity (according to given organisational objectives). Targets should push people to strive for more but should be realistic and comprehensible. Validation of appended model (1) would suggest that management should be mindful of complementarities and conflicts across different performance dimensions when setting targets in each, weighting how important each is to the organization and how much trade-off in other dimensions each entails to arrive at some optimal matrix of targets. It also shows why and how visualization and planning exercises for target achievement can make targets more effective motivators by raising the expected probability of achievement. Verification of appended model (2) would suggest that management should set targets with clear demands, and when they are in discrete dimensions, explain how they line up so that workers can easily understand and respond. My work will also have broader implications for policies using reference points to guide decision-making in other markets such as nudge-based policies and marketing.>
 
-# 2. Methodology
+Overall, I believe my research can provide a deeper understanding of how agents integrate reference points across different dimensions into their decision-making. This is highly relevant since people are often confronted with multiple rather than singular reference points, whether when making decisions about labor supply in the workplace, school enrolment, or consumption allocation more generally. Returning to the opening example, the study can directly inform the design of targets-based incentive structures in the workplace to more effectively induce higher productivity (according to given organisational objectives). Targets should push people to strive for more but should be realistic and comprehensible. Validation of appended model (1) would suggest that management should be mindful of complementarities and conflicts across different performance dimensions when setting targets in each, weighting how important each is to the organization and how much trade-off in other dimensions each entails to arrive at some optimal matrix of targets. It also shows why and how visualization and planning exercises for target achievement can make targets more effective motivators by raising the expected probability of achievement. Verification of appended model (2) would suggest that management should set targets with clear demands, and when they are in discrete dimensions, explain how they line up so that workers can easily understand and respond. My work will also have broader implications for policies using reference points to guide decision-making in other markets such as nudge-based policies and marketing.
 
-## A. Experimental design
+-->
 
-The experiment was conducted on Qualtrics. Subjects were asked to work on a slider task. <elaborate on the slider task> 
+# Methodology
 
-Subjects were randomly assigned to four treatment groups, which varied in terms of the presence of reference points (i.e. targets) in speed and accuracy, the probabilities of their work being assessed by strict or lenient assessment criterion, which respectively caught all or caught only half of mistakes made, and the extent of explanation of the reference points. Treatment 1 was the control with no reference points (and hence no explanation) and certainty of being assessed by a strict criterion. Treatments 2, 3, and 4 were set the same reference points and primed. Treatment 2 had a 75% probability of getting a lenient assessment criteria and 25% probability of strict, whereas treatment 3 had the inverse. Additionally, these two treatments explained to subjects how they should work to achieve both targets concurrently. Treatment 4 will have the same criteria assignment probabilities as treatment 2 but without the explanation of reference points. Subjects were primed to think that it would be manageable to concurrently achieve both targets under the lenient criterion but difficult to do so under the strict criterion.
+## Experimental design
 
-## B. Experimental sample and data
+The experiment was conducted on Qualtrics. Subjects were asked to work on a slider task. The task consisted of a series of slider sets, with each set containing three sliders which could be moved over a scale of 0 to 100. To complete a set, subjects just had to drag all sliders to or past the "50" point mark, but to correctly complete it, subjects needed to correctly position every slider at its designated number (which was always weakly greater than 50).
+
+Subjects were randomly assigned to four treatment groups, which varied in terms the reference points (i.e. targets) and how their work was assessed. Reference points were set in two task performance dimensions: speed (tasks completed per minute) and accuracy (proportion of recorded mistakes). There were two assessment critera: strict which recorded all actual mistakes made and lenient which recorded only a quarter; these affected the likelihood of achieving both reference points concurrently. To reinforce this, subjects were primed to think that "achieving both targets [was] manageable under a lenient criterion but highly challenging under a strict criterion". Reference points were also either presented as is or explained in greater detail by mapping tasks completed per minute to maximum actual mistakes made such that both targets were met, which affected the cognitive complexity of reconciling both reference points.
+
+Treatment 1 was the control with no reference points (and hence no explanation) and certainty of being assessed by a strict criterion. Treatments 2, 3, and 4 were set the same reference points: 9 tasks completed per minute and 10% recorded mistakes, and primed. Treatments 2 and 4 had a 75% probability of getting a lenient assessment criteria and 25% probability of strict, whereas treatment 3 had the inverse. Treatments 2 and 3 had the reference points explained in greater detail, whereas treatment 4 did not. The control allows for verification of the existence of reference point effects, which is a prerequisite to identifying any changes in those effects. Comparing treatments 2 and 3 demonstrates the role of low probabilistic expectations of achievement in attenuating reference point effects, whereas comparing treatments 2 and 4 elicits the role of cognitive complexity.
+
+## Experimental sample and data
 
 ```{r}
-#| label: read-in-main-data
+#| label: read-in-data
 #| include: false
 
-source("data\\main-data-cleaning.R")
+# Source R script used to clean raw data, preferable to reading in exported cleaned data from the script as it preserves the variable types and factor levels
+
+source("data/raw-data-processing.R") 
 
 ```
 
-There are `r nrow(slider_data_main)` number of observations. 
+```{r}
+#| label: write-out-intermediate-data
 
-## C. Theoretical specification and hypotheses
+# Cleaned full data
+
+write_csv(slider_clean, "data/slider-data-clean.csv")
+
+# Cleaned main data
+
+write_csv(slider_main, "data/slider-data-main.csv")
+
+# Loss aversion data
+
+write_csv(loss_aversion, "data/loss-aversion-data.csv")
+
+```
+
+There are `r nrow(slider_clean)` number of observations. 
+
+## Theoretical specification and hypotheses
 
 In the experiment, the agent works on a task where he has to exert effort $e$, and has reference points $N$ for the number of tasks completed per minute, and $Q$ for the percentage of mistakes made. $e$ is split into $e_1$, effort in speed, and $e_2$, effort in accuracy. First, consider a simplified version where outcomes are deterministic, reference points are degenerate, and gain-loss utilities are linear with constant loss aversion. Under the KR model, expected utility from effort across two dimensions is given by the KR model as
-
 \begin{align}
 U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\ 
     &\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
     &\mu_2[(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q)] \nonumber
 \end{align}
-
 $p(e)$ is the level payoff from effort exertion, summed across both dimensions. $c(e)$ is the cost of effort. $\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)]$ is the gain-loss utility in the speed dimension, where $\mu_1≥0$ is the gain-loss parameter, $\lambda≥1$ is the loss aversion parameter, and $\mathbb{I}(.)$ is an indicator function equaling 1 when the condition in the bracket holds and 0 otherwise. $\mu_2 [(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q) ] )]$ is analogously defined for the accuracy dimension.
 
 To account for the role of probabilistic expectations and cognitive complexity in reference point effects, I propose appended model
-
 \begin{align}
 U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
     &E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}] \times \theta \times \nonumber \\
     &\{\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
     &\mu_2[(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q)]\} \nonumber
 \end{align}
-
 The first additional term $E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta≥0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
 
 Now extending the two models to the experimental context with strict and lenient assessment criteria... 
@@ -172,17 +201,17 @@ Thus, the two models provide distinct predictions for optimal effort provision i
 
 KR model predictions:
 
-* Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. --- (KR1)
-* Treatment 3 should have a larger positive effect than treatment 2 (and 4) for achieving both targets or for achieving $Q$ but not $N$. --- (KR2)
+* KR1: Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. 
+* KR2: Treatment 3 should have a larger positive effect than treatment 2 (and 4) for achieving both targets or for achieving $Q$ but not $N$.
 
 Appended model predictions:
 
-* Treatment 3 should have lower positive effect for achieving any target than treatment 2. --- (A1)
-* Treatment 4 should have a lower positive effect for achieving any targets than treatment 2. --- (A2)
+* A1: Treatment 3 should have lower positive effect for achieving any target than treatment 2.
+* A2: Treatment 4 should have a lower positive effect for achieving any targets than treatment 2.
 
-# 3. Analysis and results
+# Results
 
-## A. Data overview
+## Data overview
 
 
 ```{r}
@@ -190,8 +219,8 @@ Appended model predictions:
 
 #Set default theme for ggplot; serif is times new roman
 
-def_theme <- theme(plot.title = element_text(family = "serif", size = 15, hjust = 0.5),
-                  axis.title = element_text(family = "serif", size = 13),
+def_theme <- theme(plot.title = element_text(family = "serif", size = 13, hjust = 0.5),
+                  axis.title = element_text(family = "serif", size = 12),
                   axis.text = element_text(family = "serif", size = 11),
                   strip.text.x = element_text(family = "serif", size = 12),
                   strip.text.y = element_text(family = "serif", size = 12, angle = 0),
@@ -199,13 +228,13 @@ def_theme <- theme(plot.title = element_text(family = "serif", size = 15, hjust 
                   legend.text = element_text(family = "serif", size = 11))
 ```
 
-## B. Probability analysis
+## Probability analysis
 
 
-## C. Reduced form and structural estimation of loss aversion
+## Reduced form and structural estimation of loss aversion
 
 
-# 4. Discussion
+# Discussion
 
 
 
@@ -221,13 +250,13 @@ def_theme <- theme(plot.title = element_text(family = "serif", size = 15, hjust 
 
 
 
-# 5. Conclusion
+## Conclusion
 
 
 
 \newpage
 
-# Bibliography
+# References
 
 ::: {#refs}
 :::
