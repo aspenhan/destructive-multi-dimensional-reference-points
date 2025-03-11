@@ -98,6 +98,33 @@ library(gt) #make general tables
 
 ```
 
+```{r}
+#| label: read-in-intermediate-data
+#| include: false
+
+# Source R script used to clean raw data, preferable to reading in exported cleaned data from separate R script as this preserves the variable types and factor levels
+
+source("data/raw-data-processing.R") 
+
+```
+
+```{r}
+#| label: write-out-intermediate-data
+
+# Cleaned full data
+
+write_csv(slider_clean, "data/slider-data-clean.csv")
+
+# Cleaned main data
+
+write_csv(slider_main, "data/slider-data-main.csv")
+
+# Loss aversion data
+
+write_csv(loss_aversion, "data/loss-aversion-data.csv")
+
+```
+
 Consider the employee of a firm whose performance is evaluated against targets across various performance dimensions (e.g. production speed, accuracy, quality etc). For example, an assembly line worker in an electronics manufacturing plant could be subject to targets on the number of components made per hour (speed), the proportion of defective components made (accuracy), and the average durability of components made (quality). Similarly in the service sector, an Uber driver could be evaluated on the number of rides provided per month, average mileage per unit time, and the average customer satisfaction rating.  It is apparent that tensions between these performance dimensions can surface, which can affect the targets' effectiveness as motivators. The emphasis for consistency and complementarity between different performance dimensions, including targets set in each, is strongly echoed in operations and general management literature [e.g. @hayes.1984.restoringour; @hayes.1978.howshould; @skinner.1974.focusedfactory; @skinner.1996.manufacturingstrategy; @swamidass.2000.focusedfactory]. I seek to examine this concept within economics. Targets can and have been integrated into the framework of expectations-based reference points [@heath.1999.goalsreference; @vonrechenberg.2016.goalsreference], a growing body of research within behavioral economics. However, empirical studies have mainly examined the effects of reference points uni-dimensionally, though theoretical models encompassing multi-dimensional reference points exist. Thus, I wish to investigate the mechanisms through which reference points interact across dimensions within this economic framework, specifically answering the following research questions:
 
 1. Do probabilistic beliefs about the achievability of reference points across multiple dimensions affect how responsive agents are to said reference points?
@@ -133,7 +160,7 @@ Overall, I believe my research can provide a deeper understanding of how agents 
 
 -->
 
-# Methodology
+# Methods
 
 ## Experimental design
 
@@ -145,32 +172,6 @@ Treatment 1 was the control with no reference points (and hence no explanation) 
 
 ## Experimental sample and data
 
-```{r}
-#| label: read-in-data
-#| include: false
-
-# Source R script used to clean raw data, preferable to reading in exported cleaned data from the script as it preserves the variable types and factor levels
-
-source("data/raw-data-processing.R") 
-
-```
-
-```{r}
-#| label: write-out-intermediate-data
-
-# Cleaned full data
-
-write_csv(slider_clean, "data/slider-data-clean.csv")
-
-# Cleaned main data
-
-write_csv(slider_main, "data/slider-data-main.csv")
-
-# Loss aversion data
-
-write_csv(loss_aversion, "data/loss-aversion-data.csv")
-
-```
 
 There are `r nrow(slider_clean)` number of observations. 
 
@@ -265,4 +266,4 @@ def_theme <- theme(plot.title = element_text(family = "serif", size = 13, hjust 
 
 # Appendix
 
-## I. Derivation of first-order conditions for experimental theoretical specification
+## Derivation of first-order conditions for experimental theoretical specification
