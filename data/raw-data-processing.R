@@ -1,8 +1,8 @@
-#read in raw data
+# read in raw data
 
 slider_clean <- read_csv("data/slider-data-raw.csv")
 
-#remove extra whitespaces for easier reference in cleaning and wrangling
+# remove extra whitespaces for easier reference in cleaning and wrangling
 
 slider_clean <- slider_clean %>%
   rename_with(str_squish) %>%
@@ -49,7 +49,6 @@ slider_clean <- slider_clean %>%
   rename_with(str_to_lower) %>%
   mutate(across(where(is.character), str_to_lower)) #also decapitalise character variable values
 
-
 # rearrange columns
 
 slider_clean <- slider_clean %>%
@@ -59,12 +58,12 @@ slider_clean <- slider_clean %>%
 
 slider_clean <- slider_clean[-1:-2, ]
 
-# Fill NA values for race_other with values from race
+# fill NA values for race_other with values from race
 
 slider_clean <- slider_clean %>%
   mutate(race_other = coalesce(race_other, race))
 
-# Fill NA values for reason_noattempt_other with values from reason_noattempt
+# fill NA values for reason_noattempt_other with values from reason_noattempt
 
 slider_clean <- slider_clean %>%
   mutate(reason_noattempt_other = coalesce(reason_noattempt_other, reason_noattempt))
@@ -113,7 +112,57 @@ slider_clean <- slider_clean %>%
 
 slider_clean <- slider_clean %>%
   mutate_if(is.character, as.numeric)
-#one observation's loss aversion data in the random payouts category was lost (coerced to NA) as subject calculated the EV of random payouts instead of indicating the number of the tasks they were willing to do under those payouts
+# one observation's loss aversion data in the random payouts category was lost (coerced to NA) as subject calculated the EV of random payouts instead of indicating the number of the tasks they were willing to do under those payouts
+
+# change values inputted as date of birth to age for "age" variable
+
+slider_clean <- slider_clean %>%
+  mutate(age = if_else(age > 1000, 2025 - age, age))
+
+# create function to assign assessment criteria at random with specified probabilities.
+
+## The function accepts three arguments: p_strict, p_lenient, and n. p_strict is the probability of a strict criterion, p_lenient is the probability of a lenient criteria, and n is the number of criteria generated. p_strict and p_lenient must sum to 1.
+## The function then generates n number of criteria based on the probabilities specified.
+
+assign_criterion <- function(p_strict = 0.25, p_lenient = 0.75, n = 1) #set arguments and their default values
+  {probs <- c(p_strict, p_lenient) #define vector of probabilities
+  
+  if (any(probs < 0)) stop("Probabilities must be non-negative.") #error for non-positive probability
+  
+  if (sum(probs) != 1) stop("Probabilities must sum to 1.") #error for probabilities that do not sum to 1
+  
+  #define sample space of draws
+  sample(c("strict", "lenient"), #elements (i.e. the criteria) in the sample space, order correspond to that in probs
+          prob = probs, #probability of each criterion
+          size = n, #number of criteria to generate
+          replace = TRUE) #draw with replacement
+}
+
+# assign assessment criteria for those which were not assigned in the survey
+
+set.seed(1)
+
+slider_clean <- slider_clean %>%
+  mutate(criterion = if_else(is.na(criterion) & treatment == 1, "strict", criterion))
+
+slider_clean <- slider_clean %>%
+  mutate(criterion = if_else(is.na(criterion) & treatment %in% c(2, 4), assign_criterion(), criterion))
+
+slider_clean <- slider_clean %>%
+  mutate(criterion = if_else(is.na(criterion) & treatment == 3,
+                             assign_criterion(p_strict = 0.75, p_lenient = 0.25),
+                             criterion))
+
+# change criterion variable back to factor
+
+slider_clean <- slider_clean %>%
+  mutate(criterion = factor(criterion, levels = c("lenient", "strict")))
+
+# create variable for recorded mistakes
+
+slider_clean <- slider_clean %>%
+  mutate(recorded_mistake_total = if_else(criterion == "lenient", mistake_total / 4, mistake_total)) %>%
+  relocate(recorded_mistake_total, .after = mistake_total)
 
 #subset loss aversion data to another dataframe, and remove from main dataframe
 
