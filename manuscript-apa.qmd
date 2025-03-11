@@ -54,6 +54,9 @@ format:
 #| label: load-packages
 #| include: false
 
+#Clear environment
+rm(list = ls())
+
 # Load required packages; install them by uncommenting commands below if not already installed
 # install.package("tidyverse")
 # install.package("readxl")
@@ -75,7 +78,6 @@ library(tidyverse)
 library(readxl) #read excel data
 library(reshape2) #alternative to tidyr though it is retired
 library(broom) #turns function output into tidy tibbles
-
 
 ## Statistical analysis
 library(DescTools) #descriptive stats
@@ -124,6 +126,7 @@ source("data/raw-data-processing.R")
 
 ```{r}
 #| label: write-out-intermediate-data
+#| include: false
 
 # Cleaned full data
 
@@ -153,43 +156,67 @@ I propose two main explanations: agents are unresponsive to reference points whe
 
 I test these propositions with a laboratory experiment. I elected for a experimental methodology as I wanted to clearly identify the decision-making mechanisms which integrate multi-dimensional reference points, and this is most clearly elicited in the controlled experiments and difficult to establish with observational data where the reference points are elusive and there are many potential confounds. While I have linked my research motivations to the workplace, the foremost step would be to uncover general ways in which people perceive and respond to multi-dimensional reference points which are applicable  to various contexts, so the abstract setting of the laboratory experiments is well-suited for it. It also provides a less costly way to verify the hypothesized mechanisms at work given the logistical constraints. 
 
-In the experiment, subjects worked on a real effort task where they had to drag sliders along a scale of 0 to 100 to designated numbers. They were evaluated on speed as measured by the number of slider sets completed and accuracy by the number completed correctly, and set targets for each metric. These two performance dimensions had inherent trade-offs as improving in accuracy necessitated spending more time on each slider to position it correctly and thus compromising on speed. The treatments varied the difficulty of achieving the targets, which augmented the probabilistic expectations of simultaneous target achievement, and the extent of explanation about the relationship between the two performance dimensions and their targets, which affected the cognitive complexity of reconciling them.
+In the experiment, subjects worked on a real effort task where they had to drag sliders along a scale of 0 to 100 to designated numbers. They were evaluated on speed as measured by the number of slider sets completed per minute and accuracy as measured by the proportion of correctly completed sets, and were set targets for each metric. These two performance dimensions had inherent trade-offs as improving in accuracy necessitated spending more time on each slider to position it correctly and thus compromising on speed. The treatments varied the difficulty of achieving the targets, which augmented the probabilistic expectations of simultaneous target achievement, and the extent of explanation about the relationship between the two performance dimensions and their targets, which affected the cognitive complexity of reconciling them.
 
 <!--
 main findings aftering running actual experiment and analysing its data
 -->
 
 <!--
-limitations of design, implementation, analysis, and findings
+Implications and limitations of findings
 
-e.g. sampling bias and generalisability
-
+Preliminary:
+These findings provide a deeper understanding of how agents integrate reference points across different dimensions into their decision-making. This is highly relevant since people are often confronted with multiple rather than singular reference points, whether when making decisions about labor supply in the workplace, school enrolment, or consumption allocation more generally. Returning to the opening example, the study can directly inform the design of targets-based incentive structures in the workplace to more effectively induce higher productivity (according to given organisational objectives). Targets should push people to strive for more but should be realistic and comprehensible. Validation of appended model (1) would suggest that management should be mindful of complementarities and conflicts across different performance dimensions when setting targets in each, weighting how important each is to the organization and how much trade-off in other dimensions each entails to arrive at some optimal matrix of targets. It also shows why and how visualization and planning exercises for target achievement can make targets more effective motivators by raising the expected probability of achievement. Verification of appended model (2) would suggest that management should set targets with clear demands, and when they are in discrete dimensions, explain how they line up so that workers can easily understand and respond. My work will also have broader implications for policies using reference points to guide decision-making in other markets such as nudge-based policies and marketing.
 -->
 
 <!--
-Implications of findings and relations to broader literature
+Relations to broader literature:
 
-Preliminary:
+Management literature:
+Talk about idea of focused factory, tensions in operations objectives, and trade-offs in strategic/ competitive  positioning in management literature
+Talk about managerial philosophies and practices like TQM which take a holistic approach to the operations objectives and link to their success
+Connect to the role of probabilistic expectations and cognitive complexity in interpreting multiple workplace targets
 
-Overall, I believe my research can provide a deeper understanding of how agents integrate reference points across different dimensions into their decision-making. This is highly relevant since people are often confronted with multiple rather than singular reference points, whether when making decisions about labor supply in the workplace, school enrolment, or consumption allocation more generally. Returning to the opening example, the study can directly inform the design of targets-based incentive structures in the workplace to more effectively induce higher productivity (according to given organisational objectives). Targets should push people to strive for more but should be realistic and comprehensible. Validation of appended model (1) would suggest that management should be mindful of complementarities and conflicts across different performance dimensions when setting targets in each, weighting how important each is to the organization and how much trade-off in other dimensions each entails to arrive at some optimal matrix of targets. It also shows why and how visualization and planning exercises for target achievement can make targets more effective motivators by raising the expected probability of achievement. Verification of appended model (2) would suggest that management should set targets with clear demands, and when they are in discrete dimensions, explain how they line up so that workers can easily understand and respond. My work will also have broader implications for policies using reference points to guide decision-making in other markets such as nudge-based policies and marketing.
-
+Economics and psychology literature:
+Rational forward-looking model of reference-dependent preferences; reasonable to expect the probabilistic expectations to extend between dimensions as well
+Reference points as a heuristic; possible unresponsiveness if the reference points themselves become too complicated
+Cognitive complexity leading to attenuation of objective probabilities to the mean/median; could be a similar effect with reference points  
 -->
 
 # Methods
 
-## Design and implementation
+## Design and execution
 
-The experiment was divided into two parts: subjects were asked to work on a real effort task and then complete a survey. The former provided the main data to answer the research questions, whereas the latter provided covariate data for heterogeneity and robustness analysis. A fixed amount of compensation was provided to incentivise participation. Ideally, there would have been additional incentives for effort exertion in the real effort task but this was not feasible due to budgetary constraints.
+The experiment was divided into two parts: a real effort task and then a questionnaire. The former provided the main data on effort exertion to answer the research questions, whereas the latter provided covariate data for heterogeneity and robustness analysis.
 
-The slider task was selected to be the real effor task as because which consisted of a series of slider sets, with each set containing three sliders which could be moved over a scale of 0 to 100. To complete a set, subjects just had to drag all sliders to or past the "50" point mark, but to correctly complete it, subjects needed to correctly position every slider at its designated number (which was always weakly greater than 50).
+The real effort task was a slider task which consisted of a series of slider sets, and each set contained three sliders which could be moved over a scale of 0 to 100.  Subjects were given five minutes to work on the task. To complete a set, subjects had to drag all sliders to or past the "50" point mark. This ensured that subjects had to actually move the sliders a considerable distance in order to complete a set, hence inducing effort in the speed dimension. To correctly complete a set, subjects needed to correctly position every slider at its designated number (which was always equal to or greater than 50), otherwise it could be counted as mistake. This induced effort in the accuracy dimension. Each set was displayed on a separate page, so having multiple sliders in each set increased the proportion of time actually spent working on the slider task by reducing the time spent on page transitions, but too many would have reduced the sensitivity of tasks completed to effort exerted and in turn the granularity of the effort measure, so I decided on three. On every page during the task, subjects were shown key task metrics, including their time spent working on all previous sets, number of tasks completed per minute, total tasks completed, and  total actual mistakes made. Measurement of effort was at the set level instead of the slider level so that task metrics had smaller quantities and could be more easily processed by subjects while completing the task.
 
-Subjects were randomly assigned to four treatment groups, which varied in terms the reference points (i.e. targets) and how their work was assessed. Reference points were set in the two task performance dimensions: speed (tasks completed per minute) and accuracy (proportion of recorded mistakes). There were two assessment critera: strict which recorded all actual mistakes made and lenient which recorded only a quarter; these affected the likelihood of achieving both reference points concurrently. To reinforce this, subjects were primed to think that "achieving both targets [was] manageable under a lenient criterion but highly challenging under a strict criterion". Reference points were also either presented as is or explained in greater detail by mapping tasks completed per minute to maximum actual mistakes made such that both targets were met, which affected the cognitive complexity of reconciling both reference points.
+The slider task was selected as it was mundane and repetitive, hence reasonably incurring a positive effort cost. This combined with the fact that working on the task provided no intrinsic value should have also made it inert to variation in personal motivation regarding the task. The task was easy and intuitive so performance on it would be less affected by differences in intelligence and education/ training among subjects. The task was also intentionally more abstract and the skills assessed were also generic since the experiment sought to find out general decision-making processes regarding effort exertion which could be generalizable to a broad range of jobs. Finally, the short task duration may not be realistic to how people optimise with respect to targets in different performnance dimensions for a long-term job, but had to be imposed due to budgetary constraints, and it still offers insight into how people respond to such multi-dimensional targets at the task level of a job (e.g. a single ride for an Uber driver) which could be aggregated to the job level.
 
-Treatment 1 was the control with no reference points (and hence no explanation) and certainty of being assessed by a strict criterion. Treatments 2, 3, and 4 were set the same reference points: 9 tasks completed per minute and 10% recorded mistakes, and primed. Treatments 2 and 4 had a 75% probability of getting a lenient assessment criteria and 25% probability of strict, whereas treatment 3 had the inverse. Treatments 2 and 3 had the reference points explained in greater detail, whereas treatment 4 did not. The control allows for verification of the existence of reference point effects, which is a prerequisite to identifying any changes in those effects. Comparing treatments 2 and 3 demonstrates the role of low probabilistic expectations of achievement in attenuating reference point effects, whereas comparing treatments 2 and 4 elicits the role of cognitive complexity.
+Subjects were randomly assigned at the individual level into four treatment groups, which varied the slider task in terms of the reference points (i.e. targets) and how the work was assessed. Reference points were set in the two performance dimensions: speed as measured by the number of tasks completed per minute, and accuracy as measured by the proportion of recorded mistakes in completed tasks. Work was assessed by either of two critera: strict which recorded all actual mistakes made, and lenient which recorded only a quarter. Subjects who were more likely to be assessed by a strict criteria thus had a lower likelihood of achieving both reference points concurrently. To reinforce this perception, subjects were primed to think that "achieving both targets [was] manageable under a lenient criterion but highly challenging under a strict criterion". Reference points were also either presented as is or explained in greater detail by mapping performance in the speed dimension to that in the accuracy dimension: subjects who received an explanation were told the additional number of actual mistakes they could make under each criteria for every additional set completed per minute, and provided a table showing the maximum number of total actual mistakes allowed under each criteria for different number of total tasks completed. This was intended to reduce the cognitive complexity of reconciling both reference points. 
 
-## Sample and context
+Treatment 1 was the control with no reference points (and hence no explanation) and certainty of being assessed by a strict criterion. Treatments 2, 3, and 4 were set the same reference points: 9 tasks completed per minute and 10% recorded mistakes, and primed. Treatments 2 and 4 had a 75% probability of getting a lenient assessment criteria and 25% probability of strict, whereas treatment 3 had the inverse. Treatments 2 and 3 had the reference points explained in greater detail, whereas treatment 4 did not. The control allows for verification of the existence of reference point effects, which is a prerequisite to identifying any changes in those effects. Comparing treatments 2 and 3 demonstrates the role of low probabilistic expectations of achievement in attenuating reference point effects, whereas comparing treatments 2 and 4 elicits the role of cognitive complexity. @tbl-treatment-groups summarises the four treatment groups and their treatment conditions.
 
-There are `r nrow(slider_clean)` observations. 
+\bigskip
+
+| Treatment | Reference Points | Assessment Criteria Probabilities           | Explanation    |
+|-----------|------------------|---------------------------------------------|----------------|
+| 1         | No               | 100% strict                                 | Not applicable |
+| 2         | Yes              | 25% chance of strict, 75% chance of lenient | Yes            |
+| 3         | Yes              | 75% chance of strict, 25% chance of lenient | Yes            |
+| 4         | Yes              | 25% chance of strict, 75% chance of lenient | No             |
+
+: Treatment groups and conditions {#tbl-treatment-groups}
+
+After the task, subjects were requested to complete an optional questionnaire on their demographics, reflections on the task, and loss aversion, providing data for heterogeneity analysis and robustness checks of treatment effects and verification of the experiment's construct validity.  Demographic information collected included gender, race, age, household income, educational level, and whether subjects studied economics at the undergraduate level or above. Reflections on the task asked about subjects' goals for speed and accuracy during the task, whether they attempted to achieve the set targets, and if not their reasons for ignoring the targets, which provided a qualitative check of whether the reference points had inherent effects and the potential treatment effects. This section also asked whether they used a mouse for the task, which could have caused differences in task performance not attributed to effort exertion. Finally, subjects indicated the number of slider sets they were willing to complete under fixed and random piece rates, and by comparing the differences in the indicated number between fixed and random piece rates with the same expected payment, I can estimate subjects' loss aversion levels. This allowed for loss aversion measures specific to the slider task and more broadly the real effort/ labor supply domain, although it was in terms of pecuniary incentives instead of non-pecuniary targets but it was difficult to elicit the latter through self-reports, and there could still be variation between different tasks within the real effort domain. 
+
+Samples were drawn from two populations: undergraduate students at the *University of Chicago* recruited through the instructors of specific courses (TBD), and the general public of Chicago recruited through the research laboratories of the *Roman Family Center for Decision Research* (RFCDR) at the *University of Chicago's Booth School of Business*. The former was chosen to alleviate financial costs and the latter was chosen for better representativeness of decision-making in the general population.
+
+Participants completed the experiment virtually on Qualtrics. Conducting the experiment in-person would have afforded greater control over the task environment and hence reduced noise in effort measures, but given the paper's time constraints, I opted for an online mode to improve accessibility so that I could more quickly collect sufficient data[^1]. Furthermore, in-person experiment conduct was also particularly difficult to operationalise for students given the limited time, as I needed to conduct the experiment outside of class time which was difficult to organise given the different schedules of the students, which would necessitate running the experiment on several occasions, and obtaining permission to use university facilities each time. While implementation was more viable at the RFCDR labs, it was advisable to conduct the experiment online for both for better comparability across the two subject pools.
+
+[^1]: Preliminary power analysis had indicated a sample size requirement of 134 observations per treatment group (536 observations total) given a conservative estimate of the minimum detectable effect size (Pearson's r) of -0.24 and equal outcome variances across groups.
+
+To incentivise participation, Students were offered x% (TBD) of course credit for participating in the study, whereas Individuals were offered a flat fee for participation. Ideally, there would have been additional incentives (aside from intrinsic motivation from the targets) for effort exertion in the real effort task. However, this was not feasible in the student sample due to fairness concerns as awarding additional class credit based on task performance would depend on the assessment criteria which was assigned by chance, nor in the public sample due to sample size requirements and budgetary constraints.
 
 ## Theoretical specification and hypotheses
 
@@ -201,7 +228,7 @@ U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
 \end{align}
 $p(e)$ is the level payoff from effort exertion, summed across both dimensions. $c(e)$ is the cost of effort. $\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)]$ is the gain-loss utility in the speed dimension, where $\mu_1≥0$ is the gain-loss parameter, $\lambda≥1$ is the loss aversion parameter, and $\mathbb{I}(.)$ is an indicator function equaling 1 when the condition in the bracket holds and 0 otherwise. $\mu_2 [(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q) ] )]$ is analogously defined for the accuracy dimension.
 
-To account for the role of probabilistic expectations and cognitive complexity in reference point effects, I propose appended model
+To account for the role of probabilistic expectations and cognitive complexity in reference point effects, I propose the appended model
 \begin{align}
 U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
     &E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}] \times \theta \times \nonumber \\
@@ -210,24 +237,32 @@ U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
 \end{align}
 The first additional term $E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta \geq 0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
 
-Extending the two models to the experimental context with strict and lenient assessment criteria, the two models provide distinct predictions for optimal effort provision in the real effort experiment[^1]
+Extending the two models to the context of the slider task with strict and lenient assessment criteria, the two models provide distinct predictions for optimal effort provision in the real effort experiment[^2]. Essentially, without accounting for the role of probabilistic expectations and cognitive complexity, the KR model predicts that subjects would respond to a higher chance of being assessed by a strict criteria by reducing actual mistakes made since they are more likely to be recorded, exerting more effort in the accuracy dimension either in addition to effort in the speed dimension or at the expense of it, and subjects' responsiveness to the targets are not affected by whether there is an explanation of how the two performance dimensions and their targets are related. Conversely, the appended model predicts that subjects faced with a higher chance of being assessed by a strict criteria would exert less effort in both performance dimensions since they believe it less likely to achieve them and hence attenuate them, and subjects provided with an explanation would exert more effort in both performance dimensions since they are better able to reconcile the targets to inform their effort exertion choices and hence act more responsively to the targets.
 
-[^1]: Refer to appendix for formal derivation of the first-order conditions
+[^2]: Refer to appendix for formal derivation of the first-order conditions
 
 \noindent KR model predictions:
 
 * KR1: Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. 
-* KR2: Treatment 3 should have a larger positive effect than treatments 2 and 4 for achieving both targets or for achieving $Q$ but not $N$.
+* KR2: Treatment 3 should have a larger positive effect than treatments 2 and 4 for achieving both targets or for achieving $Q$ at the expense of $N$.
 
 \noindent Appended model predictions:
 
 * A1: Treatment 3 will have lower positive effect for achieving any target than treatment 2.
 * A2: Treatment 4 will have a lower positive effect for achieving any targets than treatment 2.
 
-
 # Results
 
 ## Data overview
+
+The experiment garnered `r nrow(slider_clean)` observations in total. @tbl-task-sumstats show summary statistics of key task metrics across the four treatment groups. 
+
+```{r}
+#| label: tbl-task-sumstats
+
+task-sumstats <- tbl_summary()
+
+```
 
 
 ## Effort exertion and target achievement
@@ -246,7 +281,7 @@ Extending the two models to the experimental context with strict and lenient ass
 
 ## Limitations
 
-
+The arguably biggest criticism of this study would be its sampling. The undergraduate student sample was selected as a convenient and cost-free way to pilot the study and potentially increase sample size, though the findings specific to this sample would be less representative of decision-making processes with respect to multiple targets and effort exertion in the general population, especially since the students study Economics. Hence, I also sampled from the general public to alleviate this concern, although there could still be potential bias as participants were recruited and hence the composition of people who are exposed and responsive to the organisation could differ from those who are not, and of course A fixed amount of compensation was provided to incentivise participation. 
 
 ## Conclusion
 
