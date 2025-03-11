@@ -45,7 +45,7 @@ Filename of knitted .pdf: manuscript-apa.pdf
 
 ## AI Statement
 
-Describe whether and how you used AI/LLMs when completing this project: Yes, I used chatgpt-4o for modifying and debuggin code.
+Describe whether and how you used AI/LLMs when completing this project: Yes, I used chatgpt-4o for modifying and debugging code.
 
 Optionally (for engagement points) reflect on your use of AI:
 
@@ -163,11 +163,11 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 8.  Parse and write conditional statements and/or loops
 
     1. Uses conditional in multiple contexts, including dplyr pipelines
-    2. Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`)
+    2. Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`) (need at least 2)
 
-        -   [x] Objective attempt
+        -   [x] Objective attempt 
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: *note the line and command here
         
 
 9.  Use `readr` functions to read in and write out data
@@ -234,7 +234,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
       1. Uses both `facet_wrap()` and `facet_grid()` in two different plots *or*
       2. Uses facets with at least one plot using at least two optional arguments (e.g., modifying the number of rows and columns, using free vs fixed scales, etc.)
     2. Combines facets with other dynamic grouping aesthetics
-      1. If data only includes 1 sensible grouping variable, it may be used for both the faceting and groupin aes.  
+      1. If data only includes 1 sensible grouping variable, it may be used for both the faceting and grouping aes.  
 
         -   [ ] Objective attempt
         -   [ ] Objective met
@@ -397,9 +397,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [ ] Objective attempt
         -   [ ] Objective met
-        -   Grader comments:
+        -   Grader comments: Fulfilling this counts for 28 also
         
-30. Use `knitr` and quarto to produce an APA7 formatted 1-click PDF manuscript
+30. Use `knitr` and quarto to produce an APA7 formatted 1-click PDF manuscript, just need separate instances
 
     1. Produces a PDF output that is formatted in APA7 style
     2. PDF includes all necessary elements (e.g., title page, abstract, body, references)
