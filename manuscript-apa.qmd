@@ -51,7 +51,7 @@ format:
 ---
 
 ```{r}
-#| label: setup
+#| label: load-packages
 #| include: false
 
 # Load required packages; install them by uncommenting commands below if not already installed
@@ -99,6 +99,20 @@ library(gt) #make general tables
 ```
 
 ```{r}
+#| label: default-plot-themes
+
+#Set default theme for ggplot; serif is times new roman
+
+def_theme <- theme(plot.title = element_text(family = "serif", size = 13, hjust = 0.5),
+                  axis.title = element_text(family = "serif", size = 12),
+                  axis.text = element_text(family = "serif", size = 11),
+                  strip.text.x = element_text(family = "serif", size = 12),
+                  strip.text.y = element_text(family = "serif", size = 12, angle = 0),
+                  legend.title = element_text(family = "serif", size = 12),
+                  legend.text = element_text(family = "serif", size = 11))
+```
+
+```{r}
 #| label: read-in-intermediate-data
 #| include: false
 
@@ -130,13 +144,16 @@ Consider the employee of a firm whose performance is evaluated against targets a
 1. Do probabilistic beliefs about the achievability of reference points across multiple dimensions affect how responsive agents are to said reference points?
 2. Does cognitive complexity in reconciling reference points across multiple dimensions affect how responsive agents are to said reference points? 
 
+\bigskip
 My research is theoretically founded on the @koszegi.2006.modelreferencedependenta model of reference-dependence (henceforth KR model). Reference points have redefined preference modeling in economics. Introduced as a core component of Kahneman and Tversky's [-@kahneman.1979.prospecttheory; -@tversky.1991.lossaversion] prospect theory, it posits that people evaluate outcomes relative to a reference point rather than on absolute terms and weight losses more than gains. However, they did not identify the source of reference points, which became a source of contention. The KR model endogenises the reference points to be the agent’s (rational) expectations, specifically his/her probabilistic beliefs held in the recent past about what will or should happen. This accommodated alternative arguments about the origins of reference points, such as the status quo [e.g. @genesove.2001.lossaversion; @kahneman.1990.experimentaltests] and refutes to it [e.g. @plott.2005.willingnesspay; @tversky.1991.lossaversion]. Pinpointing the source of reference points was a major contribution as it allowed for more detailed studies into their effects and design, which motivates my use of the KR model as a theoretical baseline. The KR model also partially reconciles the EU theorem with prospect theory as KR considers the utility of a realized outcome to be the sum of both neoclassical consumption utility (absolute outcome levels) and gain-loss utilities (relative outcome levels), and it weights outcomes by their objective probabilities. This enables the KR model to satisfy internal consistency axioms such as transitivity which strengthens its normative appeal. However, the KR model, similar to most if not all reference point and EU models, also assumes that utilities across different dimensions of consumption are additively separate, which I seek to challenge. Yet, it seems unrealistic to think that people would view reference points in isolation from one another and determine how much to work towards each with complete disregard for the others.
 
 Beyond the hypothetical examples and theoretical framework, my research builds upon empirical studies which have applied the KR model. @crawford.2011.newyork found that the work patterns of New York taxi drivers could be explained by the KR model with dual reference points in daily wages earned and hours worked. While this is one of few works to consider multi-dimensional reference points, the field context made it difficult to elucidate the reference points, much less the mechanisms through which they could have interacted and affected the drivers’ work behavior. Furthermore, since the taxi drivers are independent contractors, their reference points are self-imposed and hence likely consistent by construction, whereas conflicting effects are the focus of my research questions. @abeler.2011.referencepoints tested and verified the KR model in a laboratory experiment where subjects were set reference points in earnings and then asked to work on a real effort task. The controlled setting allowed the reference points to be exogenously induced so their effects on effort provision could be explicated. However, they only considered a reference point in a single dimension and hence neglected multi-dimensional interaction effects. Synthesizing the laboratory methodology of Abeler et al and the dual reference point model of Crawford and Meng, my undergraduate research sought to test the multi-dimensional version of the KR model. It found that when the two reference points were congruent, they had reinforcing effects, which fits with KR model predictions, but when they were conflicting, they had negating effects in that subjects seemed to ignore the reference points completely instead of compromising between them or prioritizing one over the other as predicted by the KR model. This leads to my research questions, which endeavor to identify the reasons behind this destructive effect between disparate reference points in different dimensions. 
 
-I proposed two main explanations: agents are unresponsive to reference points when they perceive the probability of being able to achieve them all in tandem to be low, or when they find it cognitively complex to reconcile the reference points, and these problems arise when reference points across multiple dimensions conflict. We can easily append these features to the KR model, which would alter the first-order conditions predicting optimal effort provision such that they align with the experimental results.
+I propose two main explanations: agents are unresponsive to reference points when they perceive the probability of being able to achieve them concurrently to be low, and/or when they find it cognitively complex to reconcile the reference points, and these problems arise when reference points across multiple dimensions conflict. We can easily append these features to the KR model through additional parameters which scale the gain-loss utility components, which would alter the first-order conditions predicting optimal effort provision such that they align with the experimental results.
 
-I designed an experiment to test these propositions. I elected for a laboratory experimental methodology as I wanted to clearly identify the decision-making mechanisms through which reference points affect effort provision, which is difficult to accomplish with observational data where there are many confounds and more clearly elicited in the controlled environment of an experiment, and resource constraints restrict it to a laboratory setting.
+I test these propositions with a laboratory experiment. I elected for a experimental methodology as I wanted to clearly identify the decision-making mechanisms which integrate multi-dimensional reference points, and this is most clearly elicited in the controlled experiments and difficult to establish with observational data where the reference points are elusive and there are many potential confounds. While I have linked my research motivations to the workplace, the foremost step would be to uncover general ways in which people perceive and respond to multi-dimensional reference points which are applicable  to various contexts, so the abstract setting of the laboratory experiments is well-suited for it. It also provides a less costly way to verify the hypothesized mechanisms at work given the logistical constraints. 
+
+In the experiment, subjects worked on a real effort task where they had to drag sliders along a scale of 0 to 100 to designated numbers. They were evaluated on speed as measured by the number of slider sets completed and accuracy by the number completed correctly, and set targets for each metric. These two performance dimensions had inherent trade-offs as improving in accuracy necessitated spending more time on each slider to position it correctly and thus compromising on speed. The treatments varied the difficulty of achieving the targets, which augmented the probabilistic expectations of simultaneous target achievement, and the extent of explanation about the relationship between the two performance dimensions and their targets, which affected the cognitive complexity of reconciling them.
 
 <!--
 main findings aftering running actual experiment and analysing its data
@@ -145,9 +162,7 @@ main findings aftering running actual experiment and analysing its data
 <!--
 limitations of design, implementation, analysis, and findings
 
-Preliminary:
-
-A portion of the experimental sample will be drawn from undergraduate classes in the spring quarter, for which incentive will likely be class credit instead of money due to budgetary constraints. All participants are awarded a fixed amount of credit just for participation in the experiment regardless of the amount of effort exerted. This is not a problem within the experiment as it is concerned with intrinsic effort motivation from gain-loss utilities associated with the reference points which is independent of external incentives. However, it will weaken the external validity of the findings since they draw upon a specific population and context (i.e. undergraduate students completing the task for course credit). Nevertheless, such an experiment can still provide interesting insights on the effort provision decision with respect to multi-dimensional target achievement.
+e.g. sampling bias and generalisability
 
 -->
 
@@ -162,22 +177,23 @@ Overall, I believe my research can provide a deeper understanding of how agents 
 
 # Methods
 
-## Experimental design
+## Design and implementation
 
-The experiment was conducted on Qualtrics. Subjects were asked to work on a slider task. The task consisted of a series of slider sets, with each set containing three sliders which could be moved over a scale of 0 to 100. To complete a set, subjects just had to drag all sliders to or past the "50" point mark, but to correctly complete it, subjects needed to correctly position every slider at its designated number (which was always weakly greater than 50).
+The experiment was divided into two parts: subjects were asked to work on a real effort task and then complete a survey. The former provided the main data to answer the research questions, whereas the latter provided covariate data for heterogeneity and robustness analysis. A fixed amount of compensation was provided to incentivise participation. Ideally, there would have been additional incentives for effort exertion in the real effort task but this was not feasible due to budgetary constraints.
 
-Subjects were randomly assigned to four treatment groups, which varied in terms the reference points (i.e. targets) and how their work was assessed. Reference points were set in two task performance dimensions: speed (tasks completed per minute) and accuracy (proportion of recorded mistakes). There were two assessment critera: strict which recorded all actual mistakes made and lenient which recorded only a quarter; these affected the likelihood of achieving both reference points concurrently. To reinforce this, subjects were primed to think that "achieving both targets [was] manageable under a lenient criterion but highly challenging under a strict criterion". Reference points were also either presented as is or explained in greater detail by mapping tasks completed per minute to maximum actual mistakes made such that both targets were met, which affected the cognitive complexity of reconciling both reference points.
+The slider task was selected to be the real effor task as because which consisted of a series of slider sets, with each set containing three sliders which could be moved over a scale of 0 to 100. To complete a set, subjects just had to drag all sliders to or past the "50" point mark, but to correctly complete it, subjects needed to correctly position every slider at its designated number (which was always weakly greater than 50).
+
+Subjects were randomly assigned to four treatment groups, which varied in terms the reference points (i.e. targets) and how their work was assessed. Reference points were set in the two task performance dimensions: speed (tasks completed per minute) and accuracy (proportion of recorded mistakes). There were two assessment critera: strict which recorded all actual mistakes made and lenient which recorded only a quarter; these affected the likelihood of achieving both reference points concurrently. To reinforce this, subjects were primed to think that "achieving both targets [was] manageable under a lenient criterion but highly challenging under a strict criterion". Reference points were also either presented as is or explained in greater detail by mapping tasks completed per minute to maximum actual mistakes made such that both targets were met, which affected the cognitive complexity of reconciling both reference points.
 
 Treatment 1 was the control with no reference points (and hence no explanation) and certainty of being assessed by a strict criterion. Treatments 2, 3, and 4 were set the same reference points: 9 tasks completed per minute and 10% recorded mistakes, and primed. Treatments 2 and 4 had a 75% probability of getting a lenient assessment criteria and 25% probability of strict, whereas treatment 3 had the inverse. Treatments 2 and 3 had the reference points explained in greater detail, whereas treatment 4 did not. The control allows for verification of the existence of reference point effects, which is a prerequisite to identifying any changes in those effects. Comparing treatments 2 and 3 demonstrates the role of low probabilistic expectations of achievement in attenuating reference point effects, whereas comparing treatments 2 and 4 elicits the role of cognitive complexity.
 
-## Experimental sample and data
+## Sample and context
 
-
-There are `r nrow(slider_clean)` number of observations. 
+There are `r nrow(slider_clean)` observations. 
 
 ## Theoretical specification and hypotheses
 
-In the experiment, the agent works on a task where he has to exert effort $e$, and has reference points $N$ for the number of tasks completed per minute, and $Q$ for the percentage of mistakes made. $e$ is split into $e_1$, effort in speed, and $e_2$, effort in accuracy. First, consider a simplified version where outcomes are deterministic, reference points are degenerate, and gain-loss utilities are linear with constant loss aversion. Under the KR model, expected utility from effort across two dimensions is given by the KR model as
+In the experiment, the agent works on a task where he/she has to exert effort $e$, and has reference points $N$ for the number of tasks completed per minute, and $Q$ for the percentage of mistakes made. $e$ is split into $e_1$, effort in speed, and $e_2$, effort in accuracy. First, consider a simplified version where outcomes are deterministic, reference points are degenerate, and gain-loss utilities are linear with constant loss aversion. Under the KR model, expected utility from effort across two dimensions is given by the KR model as
 \begin{align}
 U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\ 
     &\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
@@ -192,54 +208,35 @@ U = &p(e_1, e_2) - c(e_1, e_2) + \nonumber \\
     &\{\mu_1[(n(e_1 )-N)\mathbb{I}(n>N) + \lambda_1(n(e_1)-N)\mathbb{I}(n \leq N)] + \nonumber \\
     &\mu_2[(Q-q(e_2))\mathbb{I}(q<Q) + \lambda_2(Q-q(e_2))\mathbb{I}(q \geq Q)]\} \nonumber
 \end{align}
-The first additional term $E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta≥0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
+The first additional term $E[\mathbb{P}(\{n \geq N-\varepsilon \} \cap \{q \leq Q+\varepsilon\}]$ captures the agent’s expected probability of simultaneously achieving (within some bandwidth $\varepsilon$ of) all reference points. When this expected probability is lower, the agent weights the gain-loss utilities less and hence is less responsive to the reference points. The second additional parameter $\theta \geq 0$ is a parameter decreasing in the cognitive complexity required to integrate the multiple reference points, so greater cognitive complexity attenuates reference point effects.
 
-Now extending the two models to the experimental context with strict and lenient assessment criteria... 
-
-Thus, the two models provide distinct predictions for optimal effort provision in the real effort experiment[^1]
+Extending the two models to the experimental context with strict and lenient assessment criteria, the two models provide distinct predictions for optimal effort provision in the real effort experiment[^1]
 
 [^1]: Refer to appendix for formal derivation of the first-order conditions
 
-KR model predictions:
+\noindent KR model predictions:
 
 * KR1: Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. 
-* KR2: Treatment 3 should have a larger positive effect than treatment 2 (and 4) for achieving both targets or for achieving $Q$ but not $N$.
+* KR2: Treatment 3 should have a larger positive effect than treatments 2 and 4 for achieving both targets or for achieving $Q$ but not $N$.
 
-Appended model predictions:
+\noindent Appended model predictions:
 
-* A1: Treatment 3 should have lower positive effect for achieving any target than treatment 2.
-* A2: Treatment 4 should have a lower positive effect for achieving any targets than treatment 2.
+* A1: Treatment 3 will have lower positive effect for achieving any target than treatment 2.
+* A2: Treatment 4 will have a lower positive effect for achieving any targets than treatment 2.
+
 
 # Results
 
 ## Data overview
 
 
-```{r}
-#| label: default-plot-themes
-
-#Set default theme for ggplot; serif is times new roman
-
-def_theme <- theme(plot.title = element_text(family = "serif", size = 13, hjust = 0.5),
-                  axis.title = element_text(family = "serif", size = 12),
-                  axis.text = element_text(family = "serif", size = 11),
-                  strip.text.x = element_text(family = "serif", size = 12),
-                  strip.text.y = element_text(family = "serif", size = 12, angle = 0),
-                  legend.title = element_text(family = "serif", size = 12),
-                  legend.text = element_text(family = "serif", size = 11))
-```
-
-## Probability analysis
-
-
-## Reduced form and structural estimation of loss aversion
-
-
-# Discussion
-
+## Effort exertion and target achievement
 
 
 ## Relationship with covariates
+
+
+# Discussion
 
 
 
