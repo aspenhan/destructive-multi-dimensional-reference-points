@@ -142,23 +142,26 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   Grader comments: 
             1. Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out, then those packages loaded with library() (not commented out)
             2. Refer to the d2mr resources page for a list of the packages you can load without a commented out install line.
+            
+            I had a commented out code for using the require() function as an alternative to calling packages with an explanation of the differences.
+            I have also added commented out the code to install all the packages I loaded
         
 6.  Use arithmetic, comparison, and logical operators
 
     1. Uses all three types of operators
     2. Uses multiple operators in data transformation pipelines and/or inline R code
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
-
+  
 7.  Parse and define functions and arguments
 
     1. Defines at least one function with at least one argument in code chunks or sourced scripts
     2. User-defined function(s) run(s) without error and produces expected output in at least 2 contexts
     3. Functions are well-documented with comments
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -171,7 +174,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [ ] Objective met
         -   Grader comments:
             1. I see `where()` in your data cleaning .R script but no others
-        
+            
+            I have also added others (if_else and case_when) in my data cleaning script and manuscript document.
+
 9.  Use `readr` functions to read in and write out data
 
     1. Reads in data from at least one source in code chunk or sourced script
@@ -183,7 +188,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   Grader comments: Your use of main-data-cleaning.R is a little odd. 
             1. You read in a file and write out to the same file, which is generally not a good idea, since you can lose original data this way, and scripts won't work on processed data the same way they would have worked on raw data.
             2. You don't need to do a whole read-in/write-out thing in a soucred script. The .R script you have now is really a stand-alone script. It doesn't need to be run every time the .qmd is knit. You should just have that run when you need to update data, then have the .qmd read in the data from the file you wrote out to.
-
+            I have rectified this to export intermediate data files in the quarto document instead of in the sourced R script.
+            
 10. Use `dplyr` and `tidyr` functions to transform data
 
     1. Uses at least 3 unique `dplyr` functions
@@ -220,7 +226,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Creates at least 2 figures with different `geom_*` layers (e.g., a scatter plot and a bar plot)
     2. At least one plot is multi-variable
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -228,7 +234,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     1. Uses at least 2 unique data-mapped `aes()` arguments (e.g., color, shape, size) to group data in a plot in one or multiple plots
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
         
@@ -240,7 +246,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Combines facets with other dynamic grouping aesthetics
       1. If data only includes 1 sensible grouping variable, it may be used for both the faceting and grouping aes.  
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
         
@@ -251,7 +257,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Variables and labels display in plain English (e.g., "Age (years)" not "child_age_yrs"
     4. Uses at least 1 static aesthetic (e.g., color, shape, size) that improves visual clarity without mapping to data
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -264,7 +270,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Presents results in narrative text, table, or plot
     - NOTE: This objective may be met with only numeric or non-numeric summaries if they are sufficiently complex (at Dr. Dowling's discretion)
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -275,10 +281,10 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Presents results in narrative text, table, or plot
     - NOTE: This objective may be met with only numeric or factor data analyses if they are sufficiently complex (at Dr. Dowling's discretion)
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
-
+        
 19. Present and interpret statistics in manuscript narrative
 
     1. Presents and interprets results of analyses in narrative text, like the results section of a journal article, including all information appropriate for a given analysis (e.g., effect size, p-value, confidence interval -- dependent on analysis type and results)
@@ -286,7 +292,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Discriminates between informative and non-informative statistics and presents only the former in narrative text
     4. Uses dynamic inline R code to render data-dependent text
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -347,9 +353,10 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     5. References render without error and link to the correct table/figure in pdf/html output
     - NOTE: Ideally your table(s) should be produced in APA7 style, but this is not a strict requirement. At a minimum, they should render as formatted tables (not raw output), have readable and correctly formatted text (e.g., column headers should be capitalized and in plain english, not literal variable names), and the table must be dynamically referenced in the text.
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
+        I added the note to the covariate table instead as it was more useful.
 
 25. Execute descriptive and inferential analyses in code chunks
 
@@ -359,7 +366,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4. Results are not displayed as raw R output
     5. Chunks are organized sensibly and appear near the text they support
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -391,7 +398,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Replaces static text with inline R references in at least 1 character context
     3. Ideally, uses inline R references for *all* data-dependent text
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
 
@@ -399,7 +406,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
     1. Uses inline R functions to render at least 3 unique data-dependent text outputs (e.g., performs rounding, calculates means, subtracts one list length from another, etc. -- inline rather than in a code chunk)
 
-        -   [ ] Objective attempt
+        -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments: Fulfilling this counts for 28 also
         
@@ -430,6 +437,14 @@ Optionally (for engagement points) write a brief reflection about your work on t
 - What did you learn from this project that you will carry forward to future projects?
 - What are you most proud of in this project?
 
+The most fulfilling part of the project for me was being able to produce professional-looking and visually pleasing figures and tables which complement the narrative text, and being able to weave it all together in a single document.
+This was also likely the most complicated and frustrating part since the various possible ways to customise the figures and tables also meant more opportunities for error, and also certain features of certain packages were not compatible with apaquarto so a lot of trial-and-error and finetuning was required.
+For example, the texreg function could not generate a quarto referenced table with output: asis under apaquarto, but texreg was superior to other table packages for handling more complex regressions like one I ran, so I had to resort to paste the raw latex output from the code into the markdown portion of the quarto document each time I made changes.
+Another issue was with adding to apa-quarto notes to figures and tables with subsections.
+The final major one was with the automatically formatted figure and table captions by apaquarto which clashed the output from certain table packages (e.g. overlapping with spanning header from gtsummary).
+However, going through all these issues and finding solutions definitely helped me to improve my coding skills and whether I like it or not, is basically the bread and butter of coding so I am glad for the experience.
+The ability to produce these visualisations will definitely be a great help in my research moving forward.
+Other good learning points was using in-line R code to render dynamic text which changes with the data, and learning LaTeX math syntax.
 
 Alternatively/additionally in mind some of the suggested ways to earn engagement points, and expand on this (or other aspects of your project) in your reflection:
 
