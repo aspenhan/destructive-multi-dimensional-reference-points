@@ -22,7 +22,8 @@ author-note:
     financial-support: null
     authorship-agreements: null
     gratitude: null
-abstract: "This is the abstract."
+abstract: "This paper investigates the effects of conflicting reference points across different dimensions of utility on effort exertion. Reference-dependent preferences have become more prevalent in economic analysis, but models so far have assumed additive separability across different dimensions of utility, which implies that agents respond to reference points in each dimension in isolaton from one another. Challenging this assumption, I hypothesize that agents consider multi-dimensional reference points holistically: agents are less responsive to reference points if they have low probabilistic expectations of being able to concurrently achieve them and/or if they have difficulty reconciling them into a single baseline against which to evaluate outcomes. I
+refine the Koszegi-Rabin reference-dependent preference model and apply it to examine effort exertion under targets in different performance dimensions of a task. The original and refined model produce distinct predictions for optimal effort exertion, which I test in a real effort experiment. The experiment finds...which bears implications for..."
 keywords: [conflicting multi-dimensional reference points, probabilistic expectations, cognitive complexity]
 bibliography: bibliography.bib
 editor_options: 
@@ -32,12 +33,13 @@ knitr:
     out.width: "75%"
 execute:
   echo: false
-floatsintext: true
 format:
   apaquarto-pdf:
+    pdf-engine: xelatex
     documentmode: man
     keep-tex: true
     list-of-figures: true
+    floatsintext: true
     fig-width: 6
     fig-asp: 0.618
     fig-align: center
@@ -48,6 +50,11 @@ format:
         \usepackage{enumitem}
         \setlist[itemize]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
         \setlist[enumerate]{topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+        \usepackage{caption}
+        \captionsetup[table]{aboveskip=20pt, belowskip=0pt}
+        \usepackage{booktabs}
+        \usepackage{dcolumn}
+        \usepackage{siunitx}
 ---
 
 ```{r}
@@ -70,6 +77,7 @@ rm(list = ls())
 # install.package("fixest")
 # install.package("lmtest")
 # install.package("texreg")
+# install.package("stargazer")
 # install.package("gtsummary")
 # install.package("gt")
 
@@ -90,6 +98,7 @@ library(lmtest) #run diagnostic tests on linear models
 
 ## Tables
 library(texreg) #make regression tables
+library(stargazer) #make regression tables
 library(gtsummary) #make summary stats tables
 library(gt) #make general tables
 
@@ -112,6 +121,7 @@ def_theme <- theme(plot.title = element_text(family = "serif", size = 13, hjust 
                   strip.text.y = element_text(family = "serif", size = 12, angle = 0),
                   legend.title = element_text(family = "serif", size = 12),
                   legend.text = element_text(family = "serif", size = 11))
+
 ```
 
 ```{r}
@@ -128,15 +138,15 @@ source("data/raw-data-processing.R")
 #| label: write-out-intermediate-data
 #| include: false
 
-# Cleaned full data
+# Export cleaned full data
 
 write_csv(slider_clean, "data/slider-data-clean.csv")
 
-# Cleaned main data
+# Export cleaned main data
 
 write_csv(slider_main, "data/slider-data-main.csv")
 
-# Loss aversion data
+# Export loss aversion data
 
 write_csv(loss_aversion, "data/loss-aversion-data.csv")
 
@@ -208,15 +218,15 @@ Treatment 1 was the control with no reference points (and hence no explanation) 
 
 : Treatment groups and conditions {#tbl-treatment-groups}
 
-After the task, subjects were requested to complete an optional questionnaire on their demographics, reflections on the task, and loss aversion, providing data for heterogeneity analysis and robustness checks of treatment effects and verification of the experiment's construct validity.  Demographic information collected included gender, race, age, household income, educational level, and whether subjects studied economics at the undergraduate level or above. Reflections on the task asked about subjects' goals for speed and accuracy during the task, whether they attempted to achieve the set targets, and if not their reasons for ignoring the targets, which provided a qualitative check of whether the reference points had inherent effects and the potential treatment effects. This section also asked whether they used a mouse for the task, which could have caused differences in task performance not attributed to effort exertion. Finally, subjects indicated the number of slider sets they were willing to complete under fixed and random piece rates, and by comparing the differences in the indicated number between fixed and random piece rates with the same expected payment, I can estimate subjects' loss aversion levels. This allowed for loss aversion measures specific to the slider task and more broadly the real effort/ labor supply domain, although it was in terms of pecuniary incentives instead of non-pecuniary targets but it was difficult to elicit the latter through self-reports, and there could still be variation between different tasks within the real effort domain. 
+After the task, subjects were requested to complete an optional questionnaire on their demographics, reflections on the task, and loss aversion, providing data for heterogeneity analysis and robustness checks of treatment effects and verification of the experiment's construct validity.  Demographic information collected included gender, race, age, household income, educational level, and whether subjects studied economics at the undergraduate level or above. Reflections on the task asked about subjects' goals for speed and accuracy during the task, whether they attempted to achieve the set targets, and if not their reasons for ignoring the targets, which provided a qualitative check of whether the reference points had inherent effects and the potential treatment effects. This section also asked whether they used a mouse for the task, which could have caused differences in task performance not attributed to effort exertion. Finally, subjects indicated the number of slider sets they were willing to complete under fixed and random piece rates, and by comparing the differences in the indicated number between fixed and random piece rates with the same expected payment, I can estimate subjects' loss aversion levels. This allowed for loss aversion measures specific to the slider task and more broadly the real effort/ labor supply domain, although it was in terms of pecuniary incentives instead of non-pecuniary targets but it was difficult to elicit the latter through self-reports, and there could still be variation between different tasks within the real effort domain. The short task duration and low stakes were due to budgetary constraints, as increasing these would lead to a compromise on sample size.
 
-Samples were drawn from two populations: undergraduate students at the *University of Chicago* recruited through the instructors of specific courses (TBD), and the general public of Chicago recruited through the research laboratories of the *Roman Family Center for Decision Research* (RFCDR) at the *University of Chicago's Booth School of Business*. The former was chosen to alleviate financial costs and the latter was chosen for better representativeness of decision-making in the general population.
+Samples were drawn from two populations: undergraduate students at the *University of Chicago* recruited through the instructors of specific courses (TBD), and the general public of Chicago recruited through the research laboratories of the *Roman Family Center for Decision Research* (RFCDR) at the *University of Chicago's Booth School of Business*. The former was chosen for convenience and minimal financial costs whereas the latter was chosen for better representativeness of the general population.
 
 Participants completed the experiment virtually on Qualtrics. Conducting the experiment in-person would have afforded greater control over the task environment and hence reduced noise in effort measures, but given the paper's time constraints, I opted for an online mode to improve accessibility so that I could more quickly collect sufficient data[^1]. Furthermore, in-person experiment conduct was also particularly difficult to operationalise for students given the limited time, as I needed to conduct the experiment outside of class time which was difficult to organise given the different schedules of the students, which would necessitate running the experiment on several occasions, and obtaining permission to use university facilities each time. While implementation was more viable at the RFCDR labs, it was advisable to conduct the experiment online for both for better comparability across the two subject pools.
 
-[^1]: Preliminary power analysis had indicated a sample size requirement of 134 observations per treatment group (536 observations total) given a conservative estimate of the minimum detectable effect size (Pearson's r) of -0.24 and equal outcome variances across groups.
+[^1]: Preliminary power analysis had indicated an upper bound sample size requirement of 179 observations per treatment group (716 observations total) given a conservative estimate of the minimum detectable effect size (Pearson's r) of -0.24 and equal outcome variances across groups.
 
-To incentivise participation, Students were offered x% (TBD) of course credit for participating in the study, whereas Individuals were offered a flat fee for participation. Ideally, there would have been additional incentives (aside from intrinsic motivation from the targets) for effort exertion in the real effort task. However, this was not feasible in the student sample due to fairness concerns as awarding additional class credit based on task performance would depend on the assessment criteria which was assigned by chance, nor in the public sample due to sample size requirements and budgetary constraints.
+To incentivise participation, those from the undergraduate student sample were offered x% (TBD) of course credit for participating in the study, whereas those from the general public sample were offered a flat fee for participation. Ideally, there would have been additional incentives (aside from intrinsic motivation from the targets) for effort exertion in the real effort task. However, this was not feasible in the student sample due to fairness concerns as awarding additional class credit based on task performance would depend on the assessment criteria which was assigned by chance, nor in the public sample due to sample size requirements and budgetary constraints.
 
 ## Theoretical specification and hypotheses
 
@@ -243,49 +253,356 @@ Extending the two models to the context of the slider task with strict and lenie
 
 \noindent KR model predictions:
 
-* KR1: Treatments 2 and 4 will have similar positive effects on the probability of achieving any target. 
+* KR1: Treatments 2 and 4 will have similar positive effects on the probability of achieving any target.
 * KR2: Treatment 3 should have a larger positive effect than treatments 2 and 4 for achieving both targets or for achieving $Q$ at the expense of $N$.
 
 \noindent Appended model predictions:
 
-* A1: Treatment 3 will have lower positive effect for achieving any target than treatment 2.
-* A2: Treatment 4 will have a lower positive effect for achieving any targets than treatment 2.
+* A1: Treatment 3 will have lower positive effect for achieving any target than treatment 2, and in the extreme tend to treatment 1 (no effects).
+* A2: Treatment 4 will have a lower positive effect for achieving any targets than treatment 2, and in the extreme tend to treatment 1 (no effects)
 
 # Results
 
-## Data overview
+## Task performance overview
 
-The experiment garnered `r nrow(slider_clean)` observations in total. @tbl-task-sumstats show summary statistics of key task metrics across the four treatment groups. 
+<!--
+
+I am analysing preliminary data from an initial trial of the experiment with friends and family, so there may be problems with the experiment's construct validity which need to be fine-tuned, and there may be much noise in the results given the small sample unrelated to the treatments which prevents me from drawing any meaningful statistical inferences and conclusions about treatment effects.
+
+-->
+
+The experiment garnered `r nrow(slider_main)` observations in total. @tbl-task-sumstats shows summary statistics of two key task performance metrics: sets completed per minute and proportion of actual mistakes, in speed and accuracy respectively. Across all groups, tasks completed per minute is well below the target of 9, and proportion of actual mistakes is well below the target of 10-40% (depending on the assessment criteria), suggesting that subjects focused much more on the accuracy dimension instead of the speed dimension. This is also reflected in the post-task survey, where the most common answer to whether subjects attempted to achieve the targets set is "`r Mode(na.omit(slider_main$achieve_attempt))`" to , and the most cited reason for not attempting to achieve both targets is that it was "`r Mode(na.omit(slider_main$reason_noattempt))`".
+
+Surprisingly, treatment 1 (i.e. the control) has the second highest average tasks completed per minute at `r round(mean(slider_main$task_per_min[slider_main$treatment == 1]), 2)`, around 1 more than those of treatments 2 and 3 and very similar to that of treatment 4. There are two possible explanations. The first is that the reference points had counterproductive effects which lowered effort exertion in treatments 2 and 3, but the lack of explanation led to no effects in treatment 4. The second is that the reference points had no effects, and the additional explanation only increased the cognitive load of subjects which detrimentally impacted their motivation and/or performance in treatments 2 and 3. While treatment group 3 has the lowest proportion of actual mistakes on average at `r round(mean(slider_main$mistake_rate[slider_main$treatment == 3]), 2)`, the variance between treatments are negligible relative to the variance within treatments, so this is unlikely to be meaningful.
 
 ```{r}
 #| label: tbl-task-sumstats
+#| tbl-cap: "Summary statistics of key task performance metrics"
+#| tbl-cap-location: bottom
 
-task-sumstats <- tbl_summary()
+# Create summary statistics table of key task performance metrics
+
+task_sumstats <- slider_main %>% #choose dataset
+  select(treatment, task_per_min, mistake_rate) %>% #choose variables
+  tbl_summary(by = treatment, #group by treatment
+              type = where(is.numeric) ~ "continuous", #specify variable type (discrete vs continuous)
+              statistic = list(all_continuous() ~ "{mean} ({sd})", #specify statistics to compute
+                               all_categorical() ~ "{n} ({p}%)"),
+              label = list(task_per_min ~ "Sets completed per minute", #rename row names
+                           mistake_rate ~ "Proportion of actual mistakes")) %>%
+  modify_header(label ~ "**Metric**", all_stat_cols() ~ "**{level}** N = {n}") %>% #rename column names
+  add_overall(col_label = "**All** N = {n}") %>% #add column for all data
+  modify_spanning_header(c(stat_1, stat_2, stat_3, stat_4) ~ "**Treatment group**") #add spanning header for treatment groups
+
+task_sumstats
 
 ```
 
+To obtain a fuller picture of the task performance variation across treatment groups, @fig-task-dist illustrates the distributions of the two task performance metrics. Distributional differences mostly match those suggested by the mean. In the speed dimension, treatment 1 shows clustering between 5-6 tasks per minute, whereas treatment 2 has most subjects completing below 5 tasks per minute, which points to negative reference point effects solely based on comparing these two groups. Less can be inferred from treatment 3 since it only has `r sum(slider_main$treatment == 3)` observations. Treatment 4 shows greater dispersion, which may very well just be due to sampling. In the accuracy dimension, treatment 3's low average proportion of actual mistakes is likely due to its small number of observations leading to a clustering on the lower tail by pure chance, whereas treatment 4's high average proportion is due to an outlier at `r max(slider_main$mistake_rate[slider_main$treatment == 4])`. This supports the previous conclusion that average differences are unlikely to be meaningful.
 
-## Effort exertion and target achievement
+```{r}
+#| label: fig-task-dist
+#| fig-cap: "Distributions of key task performance metrics"
+#| fig-subcap:
+#|   - "Tasks completed per minute"
+#|   - "Proportion of actual mistakes"
+#| fig-asp: 0.8
 
+# Histograms plotted instead of densities due to small sample size
 
-## Relationship with covariates
+# Create histogram plot of tasks completed per min
 
+task_dist_speed <- slider_main %>%
+  ggplot(aes(x = task_per_min)) +
+  geom_histogram(aes(fill = treatment),binwidth = 0.1) +
+  facet_grid(treatment ~ .) +
+  scale_y_continuous(breaks = seq(0, 2, 1)) +
+  labs(x = "Sets completed per minute",
+       y = "Density") +
+  guides(fill = "none") +
+  def_theme
+
+task_dist_speed
+
+# Create histogram plot of proportion of actual mistakes
+
+task_dist_accuracy <- slider_main %>%
+  ggplot(aes(x = mistake_rate)) +
+  geom_histogram(aes(fill = treatment), binwidth = 0.01) +
+  facet_wrap(. ~ treatment, ncol = 1, strip.position = "right") +
+  labs(x = "Proportion of actual mistakes",
+       y = "Density") +
+  scale_y_continuous(breaks = seq(0, 3, 1)) +
+  guides(fill = "none") +
+  def_theme
+
+task_dist_accuracy
+
+```
+
+```{r}
+#| label: baseline-balance-joint-test
+#| include: false
+
+# Regress treatment group on covariates (multinom logit model)
+
+basebal_reg <- multinom(treatment ~ gender + race + age + income + econ + mouse, data = slider_main)
+
+# Conduct likelihood ratio test for the full model against the model with only an intercept (no predictors)
+
+basebal_test <- lrtest(basebal_reg)
+
+# Extract test p-value
+
+basebal_pvalue <- basebal_test$"Pr(>Chisq)"[2]
+
+basebal_pvalue
+
+```
+
+## Baseline balance
+
+It is also important to consider that task performance differences between treatment groups may arise from individual heterogeneities across groups unrelated to treatment. Since this sample was mostly drawn from my social circle, subjects may have felt obligated to perform well regardless of whether they were set targets. While randomised treatment assignment should even out these variations between treatment groups in expectation, this may not hold by chance for a single instance of randomisation, especially with small sample size and the unequal split of subjects between treatment groups.
+
+Hence, to verify proper randomisation and identify potential sources of heterogeneity in task performance between treatment groups in addition to the treatment, I check for baseline balance between the treatment groups using covariate data. @tbl-demographics-sumstats reports the distribution of covariates across the four treatment groups and p-values for the test of covariate differences between treatment groups at the individual covariate level[^3]. Only age significantly differs at the 5% level between treatment groups, although the actual magnitudes of differences are small and do not correspond to distinct developmental stages in life, so the actual effect on task performance is likely negligible. Gender and mouse show less significant differences (only at the 10% level). The larger proportion of males in treatment group 1 could be related to its average higher effort exertion and/or task performance, and the more prevalent mouse usage in groups 1 and 4 is quite a plausible contributor to higher task performance in those groups.
+
+To correct for multiple hypotheses testing, I use the Hommel method[^4] which found no significant differences and also perform a joint test for any covariate difference between treatment groups which reported a p-value of `r round(basebal_pvalue, 3)`. This implies that covariate differences are negligible at the individual level but potentially significant (at 10% but not 5%) at the collective level. Accounting for the inherent underpowered nature of hypothesis tests due to the small sample size, I would interpret the results to be in support of baseline differences between the treatment groups contributing to task performance differences[^5], so covariates should be controlled for in subsequent analysis.
+
+[^3]: The Fisher's exact test is used instead of the chi-squared test for categorical variables since the former uses finite sample properties rather than asymptotic sample properties and hence is more appropriate for small sample sizes, though it is less powerful in detecting departures from the null.
+
+[^4]: While the most powerful among conventional Bonferroni-type corrections, the Hommel method may still underestimate positive correlation among the variables and hence tend to be overly conservative.
+
+[^5]: Nevertheless, it is definitely still possible that the reference points themselves had negative effects on effort exertion and task performance, particularly given the lacklustre significance of covariate differences. One possible explanation of the negative effects is that the externally imposed targets crowded out internally conceived ones. A possible rectification is to phrase the task instructions for the control to prevent unintentionally inducing internal targets among subjects in the control, e.g. "complete as many sets and as accurately as you want to" instead of "please complete as many sets and as accurately as you can" as the latter could cause the subjects to exert more effort to prove their capability even without explicit targets.
+
+```{r}
+#| label: tbl-demographics-sumstats
+#| tbl-pos: H
+#| tbl-cap: "Summary statistics of covariate data"
+#| apa-note: "Significant p-values at 10% level are bolded"
+
+# Create summary statistics table of covariates
+
+demo_sumstats <- slider_main %>%
+  select(treatment, gender, race, age, income, econ, mouse) %>% #edu has been omitted as all subjects who responded are college educated
+  mutate(across(where(is.factor), ~ str_to_title(as.character(.)) %>% as.factor())) %>% #capitalise variable values
+  rename_with(str_to_title) %>% #capitalise variable names
+  tbl_summary(by = Treatment,
+              missing = "no", #omit reporting of unknown values
+              type = where(is.numeric) ~ "continuous",
+              statistic = list(all_continuous() ~ "{mean} ({sd})",
+                               all_categorical() ~ "{n} ({p}%)")) %>%
+  modify_header(label ~ "**Metric**", all_stat_cols() ~ "**{level}** N = {n}") %>%
+  modify_spanning_header(c(stat_1, stat_2, stat_3, stat_4) ~ "**Treatment group**") %>%
+  add_p %>% #add p-values
+  bold_p(t = 0.1) %>% #bold significant p-values at 10% level
+  add_q(method = "hommel") #add Hommel corrected p-values
+
+demo_sumstats
+
+```
+
+## Trade-off in task performance dimensions
+
+To understand trade-offs between effort in the two dimensions, I examine how their performance metrics varied with each other. @fig-speed-accuracy maps the scatterplot and the corresponding linear best fit line between the two performance metrics. When considering the full data, the flat fitted line suggests negligible substitution effects between effort in speed and accuracy, as on average a decrease in the total proportion of actual mistakes does not affect the number of sets completed per minute, implying subjects maintained the same amount of effort in the speed dimension as they increased effort in the accuracy dimension. However, when we remove outliers from the data, we see a negative relationship, suggesting possible substitution effects which were masked by noisy estimates. Again, it is difficult to draw concrete conclusions due to the small sample size.
+
+```{r}
+#| label: fig-speed-accuracy
+#| fig-cap: "Relationship between speed and accuracy in task performance"
+#| fig-subcap:
+#|   - "All data"
+#|   - "Without outliers"
+#| warning: false
+
+# Create scatter plot and fitted line plot of speed and accuracy using all data
+
+speed_accuracy_plot_all <- slider_main %>%
+  ggplot(aes(x = mistake_rate, y = task_per_min)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", linewidth = 1) +
+  labs(y = "Sets completed per minute", x = "Proportion of actual mistakes") +
+  def_theme
+
+speed_accuracy_plot_all
+
+# Create scatter plot and fitted line plot of speed and accuracy using data without outliers
+
+speed_accuracy_plot_reduced <- slider_main %>%
+  filter(between(mistake_rate, quantile(mistake_rate, 0.25) - 1.5 * IQR(mistake_rate), quantile(mistake_rate, 0.75) + 1.5 * IQR(mistake_rate))) %>%
+  filter(between(task_per_min, quantile(task_per_min, 0.25) - 1.5 * IQR(task_per_min), quantile(task_per_min, 0.75) + 1.5 * IQR(task_per_min))) %>% 
+  ggplot(aes(x = mistake_rate, y = task_per_min)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", linewidth = 1) +
+  labs(y = "Sets completed per minute", x = "Proportion of actual mistakes") +
+  def_theme
+
+speed_accuracy_plot_reduced 
+
+```
+
+## Regression analysis of effort exertion and task performance
+
+<!--
+
+This mainly serves as an outline of the regression analysis plan instead of an actual analysis since nothing meaningful can be estimated and inferred now given the small sample size, noisy data, and dubious reference point effects.
+
+-->
+
+```{r}
+#| label: target-achievement-variable
+
+# Create variable for whether targets were achieved
+
+slider_main <- slider_main %>%
+  mutate(achieve_status = case_when(
+    task_per_min >= 9 & recorded_mistake_rate <= 0.1 ~ "both",
+    task_per_min >= 9 & recorded_mistake_rate > 0.1 ~ "speed",
+    task_per_min < 9 & recorded_mistake_rate <= 0.1 ~ "accuracy",
+    task_per_min < 9 & recorded_mistake_rate > 0.1 ~ "none"))
+
+# Make variable factor
+
+slider_main$achieve_status <- factor(slider_main$achieve_status, levels = c("none", "accuracy", "speed", "both"))
+
+```
+
+To formally test the predictions by the KR model and my appended model, I estimate the multinomial logistic regression model 
+$$
+log \frac {\mathbb{P}(Y = y)}{\mathbb{P}(Y = y_0)} = \alpha + \beta D^T + \theta criterion + \eta X + \varepsilon_i
+$$
+$Y$ is the categorical variable for whether subjects achieved the targets, with four possible values: achieving both targets, achieving the speed target only, achieving the accuracy target only, and achieving none. Achieving none is set as the baseline (i.e. $y_0$). $D^T$ is the vector of treatment group dummies, with treatment 1 as the baseline (i.e. omitted). $criterion$ is the assessment criteria, with strict as the baseline. $X$ is the vector of covariates as mentioned above. The estimated coefficients are readily interpretable as the increase in the log odds ratio of achieving both targets/ only the speed target/ only the accuracy target relative to  achieving no targets, and hence map nicely to treatment effects on the probability of target achievement. In the data, subjects either achieved no targets or only the accuracy target, so only one log odds ratio model was estimated under two specifications, a nested one without the covariates and a full one with the covariates.
+
+@tbl-target-reg reports the regression estimates[^6]. The goodness-of-fit measures suggest that the covariates do correlate with target achievement probabilities, suggesting compromised randomisation and baseline imbalance across treatment groups. Hence, I focus on the regression estimates in the full model. Treatments 2 and 3 both show very significant positive effects on the log likelihood of achieving the accuracy target. Treatment 4 also shows very significant effects in the nested model, but no interpretation is possible in the full model due to insufficient observations which prevents standard error estimation. Surprisingly, the lenient criterion lowered the probability of achieving the accuracy target despite allowing for more actual mistakes, and mouse usage had no significant effects on target achievement probabilities though one would reasonably expect it to boost performance. Females and non-binary people were also generally more likely to achieve the accuracy target. Overall, I would be cautious in interpreting these estimates even descriptively since `r round(sum(slider_main$achieve_status == "accuracy") / (sum(slider_main$achieve_status == "accuracy") + sum(slider_main$achieve_status == "none")) * 100, 2)`% of observations achieved the accuracy target as opposed to not achieving any, and the cell count for each regressor value is extremely small, so the estimates are likely not informative of any correlational effects, much less causal effects.
+
+[^6]: Covariates with insignificant coefficient estimates not reported. Estimates reported to 2 decimal places.
+
+```{r}
+#| label: target-reg-model
+#| include: false
+
+# Run regression model without controlling for covariates
+
+target_reg_simple <- slider_main %>%
+  select(achieve_status, treatment, criterion) %>%
+    mutate(criterion = factor(criterion, levels = c("strict", "lenient"))) %>% #reorder criterion to make strict the baseline
+  multinom(achieve_status ~ ., data = .)
+
+# Run regression model controlling for covariates
+
+target_reg <- slider_main %>%
+  select(achieve_status, treatment, criterion, gender: mouse, -race_other, -edu) %>% #omit race_other to reduce degrees of freedom used and omit edu as there is only one level
+  filter(income != "Prefer not to say") %>% #make income numeric to reduce degrees of freedom used 
+  mutate(income = as.numeric(income)) %>%
+  mutate(criterion = factor(criterion, levels = c("strict", "lenient"))) %>%
+  multinom(achieve_status ~ ., data = .)
+
+# Check for multicollinearity
+summary(target_reg_simple)
+
+reg_models <- list(target_reg_simple, target_reg)
+
+```
+
+```{r}
+#| label: target-reg-table
+#| include: false
+
+# Create regression table
+
+target_regtbl <- texreg(reg_models, stars = c(0.01, 0.05, 0.1), digits = 2, include.ci = FALSE,,
+                        omit.coef = "genderprefer not to say|race|!raceother|age|income|econ|mouse",
+                        custom.model.names = c("Without controls", "With controls"),
+                        custom.header = list("Accuracy" = 1:2),
+                        include.deviance = FALSE,
+                        booktabs = TRUE,
+                        caption = NULL)
+
+target_regtbl
+
+# apaquarto does not support table output with output: asis for some reason so have to resort to below
+# Update table below with the latex output if any changes to the model and table creator are made, and remove the extra caption generated by latex
+
+```
+
+::: {#tbl-target-reg}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l c c}
+\toprule
+ & \multicolumn{2}{c}{Accuracy} \\
+\cmidrule(lr){2-3}
+ & Without controls & With controls \\
+\midrule
+(Intercept)      & $1.25$        & $21.63$       \\
+                 & $(0.80)$      & $(100.07)$    \\
+treatment2       & $13.33$       & $11.96^{***}$ \\
+                 & $(1465.92)$   & $(0.00)$      \\
+treatment3       & $9.33$        & $19.33^{***}$ \\
+                 & $(140.80)$    & $(0.00)$      \\
+treatment4       & $15.54^{***}$ & $4.14$        \\
+                 & $(0.00)$      & $$            \\
+criterionlenient & $5.37^{***}$  & $-2.37^{***}$ \\
+                 & $(0.00)$      & $(0.00)$      \\
+genderfemale     &               & $62.56^{***}$ \\
+                 &               & $(0.00)$      \\
+gendernon-binary &               & $7.04^{***}$  \\
+                 &               & $(0.00)$      \\
+\midrule
+AIC              & $19.53$       & $24.00$       \\
+BIC              & $25.21$       & $34.00$       \\
+Log Likelihood   & $-4.77$       & $-0.00$       \\
+Num. obs.        & $23$          & $17$          \\
+K                & $2$           & $2$           \\
+\bottomrule
+\multicolumn{3}{l}{\scriptsize{$^{***}p<0.01$; $^{**}p<0.05$; $^{*}p<0.1$}}
+\end{tabular}
+\label{table:coefficients}
+\end{center}
+\end{table}
+
+Regression of target achievement probabilities
+
+:::
 
 # Discussion
 
+## Robustness analysis
 
+With actual experimental data, I will test whether the results hold when using different bandwidths around the targets to define whether the targets were achieved.
 
-## Robustness checks
+I will also use the loss aversion dataset to estimate reduced forms and strutural parameters of subjects' loss aversion levels, and include it as an additional regressor interacted with the treatment dummies. This would sense-check the reference point effects as those with greater loss aversion would show greater sensitivity to the targets and hence have augmented treatment effects. <!-- This is a moot point now since the reference points have dubious/ contrary effects to that intended -->
 
+## Heterogeneity analysis
 
+After establishing the robustness of results, I will examine (robust) significant differences in baseline effort exertion/ task performance across subgroups with different characteristics (i.e. significant coefficient on the corresponding regressor) and significant differences in treatment effects across subgroups (significant coefficient on the interaction term between the regressor and the treatment dummy).
 
-## Limitations
+I will distinguish between descriptive and causal interpretations of thcovariate effects and discuss possible reasons for their existence.
 
-The arguably biggest criticism of this study would be its sampling. The undergraduate student sample was selected as a convenient and cost-free way to pilot the study and potentially increase sample size, though the findings specific to this sample would be less representative of decision-making processes with respect to multiple targets and effort exertion in the general population, especially since the students study Economics. Hence, I also sampled from the general public to alleviate this concern, although there could still be potential bias as participants were recruited and hence the composition of people who are exposed and responsive to the organisation could differ from those who are not, and of course A fixed amount of compensation was provided to incentivise participation. 
+## Study evaluation
+
+Currently, the most glaring issue with the study is construct validity, as the reference points are/ may not having the intended effects on effort exertion and task performance, and participants inherently gravitate towards the acccuracy target regardless of the assessment criteria probabilities and priming. Of course, this could be (partially) a feature of my preliminary sampling from friends and family. Still, the design should be re-evaluated to more effectively induce a baseline positive response to the set targets and similar weighting of the two targets.
+<!-- Hopefully this is not an issue with the final experiment, but otherwise this section will be mainly devoted to explaining how subjects may have interpreted the task, performance dimensions, and targets to cause such findings -->
+
+Another limitation of the study was the control over internal validity, particularly with respect to compliance and randomisation. Since the subjects completed the survey online, they could have refreshed the page either deliberately or unknowingly which would reassign their treatment status, possibly to a different one. This would not only compromise the randomisation mechanism, but also make subjects aware of the different treatment conditions and behave differently.
+<!-- Use data to justify whether this would be a major concern  -->
+
+There are also certain design aspects which may not necessarily threaten internal validity but could have been improved to increase statistical power. For example, stratified randomisation would be ideal to prevent covariate imbalance, and in-person administation of the experiment would have mitigated variations in environmental interference and generated less noisy results, and better enforced compliance. However, the former would require collecting covariate data prior to starting the task, and since the survey itself was not incentivised due to budgetary constraints, imposing it before the task could have deterred participation and negatively impacted sample size. For similar reasons, due to operationalisation challenges and reduced accessibility, virtual administration of the experiment was favoured to collect enough data more quickly in the limited time frame for the study.
+
+Finally, I anticipate concerns about the external validity of the study due to the sampling and task setting. Findings from an undergraduate student sample may be less representative of decision-making processes with respect to multiple targets and effort exertion in the general population. The general public sample seeks to resolve this, but since they are recruited via RFCDR, there could still be selection bias as the composition of people who are exposed and responsive to the organisation could differ from those who are in the general population (e.g. wealthier, more educated, greater familiarity with behavioral research etc), and further the composition of people who elect into the study may differ from those who do not (e.g. less risk averse, lower opportunity cost of time, more motivated to participate in knowledge creation etc). As for the task setting, the abstract nature of the task may mean that how people respond to targets in the experiment does not reflect how they respond to targets in their actual jobs. Further exacerbating this disjunction is the short task duration and low stakes, which is unrealistic to how people perceive work in long-term employment. However, I would argue that the experiment investigates general decision-making processes which has broad transference across populations and domains, and even with limited generalisability still offers valuable insight into fundamental decision rules which can act as a springboard for thinking about and modelling more specific contexts. Furthermore, the short duration and low stakes can still parallel how people respond to such multi-dimensional targets at the task level of a job (e.g. a single ride for an Uber driver) which could be aggregated to the job level.
 
 ## Conclusion
 
+<!--
 
+Summarise main findings and link back to model hypotheses and research questions
+
+If findings support my appended model, discuss implications for policy (e.g. design of workplace incentive and target structures) and directions for future research
+
+If findings support KR model, discuss possible reasons for difference with undergraduate research findings
+
+If findings support neither, evaluate the experiment
+
+-->
 
 \newpage
 
