@@ -78,7 +78,7 @@ slider_clean <- slider_clean %>%
   mutate(date = as.POSIXct(date, format = "%Y-%m-%d %H:%M:%S"),
          finished = factor(finished, levels = c("false", "true")),
          treatment = factor(treatment, levels = c("1", "2", "3", "4")),
-         criterion = factor(criterion, levels = c("lenient", "strict")),
+         criterion = factor(criterion, levels = c("strict", "lenient")),
          instruct_duration = as.numeric(instruct_duration),
          task_duration = as.numeric(task_duration),
          task_per_min = as.numeric(task_per_min),
@@ -163,6 +163,14 @@ slider_clean <- slider_clean %>%
 slider_clean <- slider_clean %>%
   mutate(recorded_mistake_total = if_else(criterion == "lenient", mistake_total / 4, mistake_total)) %>%
   relocate(recorded_mistake_total, .after = mistake_total)
+
+# create variables for mistake rate
+
+slider_clean <- slider_clean %>%
+  mutate(mistake_rate = mistake_total / task_total) %>%
+  mutate(recorded_mistake_rate = recorded_mistake_total / task_total) %>%
+  relocate(mistake_rate, .after = recorded_mistake_total) %>%
+  relocate(recorded_mistake_rate, .after = mistake_rate)
 
 #subset loss aversion data to another dataframe, and remove from main dataframe
 
