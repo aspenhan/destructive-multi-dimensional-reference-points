@@ -138,10 +138,10 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses more than one function to install/load/require packages (including those used in commented code)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments: 
-            1. Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out, then those packages loaded with library() (not commented out)
-            2. Refer to the d2mr resources page for a list of the packages you can load without a commented out install line.
+            1. ~~Use more than 1 function to install/require/load packages; functions that (may) install something on your reader’s machine should be commented out, then those packages loaded with library() (not commented out)~~
+            2. ~~Refer to the d2mr resources page for a list of the packages you can load without a commented out install line.~~
             
             I had a commented out code for using the require() function as an alternative to calling packages with an explanation of the differences.
             I have also added commented out the code to install all the packages I loaded
@@ -152,7 +152,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses multiple operators in data transformation pipelines and/or inline R code
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
   
 7.  Parse and define functions and arguments
@@ -162,7 +162,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Functions are well-documented with comments
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 8.  Parse and write conditional statements and/or loops
@@ -171,9 +171,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. Uses multiple types of conditional/loop functions (e.g., `if_else()`, `case_when()`, `for`, `while`) (need at least 2)
 
         -   [x] Objective attempt 
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
-            1. I see `where()` in your data cleaning .R script but no others
+            1. ~~I see `where()` in your data cleaning .R script but no others~~
             
             I have also added others (if_else and case_when) in my data cleaning script and manuscript document.
 
@@ -184,10 +184,10 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Uses only relative paths that run without error when repo is cloned
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments: Your use of main-data-cleaning.R is a little odd. 
-            1. You read in a file and write out to the same file, which is generally not a good idea, since you can lose original data this way, and scripts won't work on processed data the same way they would have worked on raw data.
-            2. You don't need to do a whole read-in/write-out thing in a soucred script. The .R script you have now is really a stand-alone script. It doesn't need to be run every time the .qmd is knit. You should just have that run when you need to update data, then have the .qmd read in the data from the file you wrote out to.
+            1. ~~You read in a file and write out to the same file, which is generally not a good idea, since you can lose original data this way, and scripts won't work on processed data the same way they would have worked on raw data.~~
+            2. ~~You don't need to do a whole read-in/write-out thing in a soucred script. The .R script you have now is really a stand-alone script. It doesn't need to be run every time the .qmd is knit. You should just have that run when you need to update data, then have the .qmd read in the data from the file you wrote out to.~~
             I have rectified this to export intermediate data files in the quarto document instead of in the sourced R script.
             
 10. Use `dplyr` and `tidyr` functions to transform data
@@ -227,7 +227,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     2. At least one plot is multi-variable
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 14. Use dynamic aesthetics to group data
@@ -235,7 +235,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Uses at least 2 unique data-mapped `aes()` arguments (e.g., color, shape, size) to group data in a plot in one or multiple plots
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
         
 15. Use facets to create parallel plots
@@ -247,7 +247,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
       1. If data only includes 1 sensible grouping variable, it may be used for both the faceting and grouping aes.  
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
         
 16. Create publication-quality plots using `theme` and `labs` layers
@@ -258,8 +258,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4. Uses at least 1 static aesthetic (e.g., color, shape, size) that improves visual clarity without mapping to data
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments:
+        -   [x] Objective met
+        -   Grader comments: These are great!! I love that you figured out how to use Quarto for subplots. I usually go to the patchwork package for that, but some others have said that isn't working correctly with apaquarto for them. This is a great alternative!
 
 ### Data analysis
 
@@ -271,7 +271,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     - NOTE: This objective may be met with only numeric or non-numeric summaries if they are sufficiently complex (at Dr. Dowling's discretion)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 18. Perform simple hypothesis testing analyses for multiple data types
@@ -282,7 +282,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     - NOTE: This objective may be met with only numeric or factor data analyses if they are sufficiently complex (at Dr. Dowling's discretion)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
         
 19. Present and interpret statistics in manuscript narrative
@@ -293,8 +293,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4. Uses dynamic inline R code to render data-dependent text
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
+       
 
 ### BibTeX
 
@@ -317,8 +318,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     5. May include references not cited in-text
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments: for apa formatting it needs to be called "References"
+        -   [x] Objective met
+        -   Grader comments: ~~for apa formatting it needs to be called "References"~~
 
 ### Notebooks and code chunks
 
@@ -330,8 +331,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4.  Chunks are distributed throughout the manuscript, sensibly placed near the text they support
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments: it will require substantially more than 2 chunks to demonstrate the best practices above
+        -   [x] Objective met
+        -   Grader comments: ~~it will require substantially more than 2 chunks to demonstrate the best practices above~~
         
 23. Use code chunks to set up a quarto document
 
@@ -341,8 +342,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4. Organizes setup chunks sensibly
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments: see comment above about read data and sourced scripts; the readin (or source) should be a setup chunk at the beginning of the document
+        -   [x] Objective met
+        -   Grader comments: ~~see comment above about read data and sourced scripts; the readin (or source) should be a setup chunk at the beginning of the document~~
         
 24. Render publication-quality tables, figures, and images from code chunks
 
@@ -356,6 +357,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
         -   [x] Objective attempt
         -   [ ] Objective met
         -   Grader comments:
+            1. Raw output. seems like there's a problem in the chunk tbl-demographics-sumstats. The table does render, but at the point in the text where the chunk occurs there is raw message output
         I added the note to the covariate table instead as it was more useful.
 
 25. Execute descriptive and inferential analyses in code chunks
@@ -367,8 +369,9 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     5. Chunks are organized sensibly and appear near the text they support
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
+
 
 ### R Markdown and Quarto
 
@@ -377,8 +380,8 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Includes all necessary metadata, output options, and formatting options necessary to render an APA styled document (or other specified style if appropriate for the project)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
-        -   Grader comments: you've got everything except an abstract. once you fill that in, you'll meet this objective.
+        -   [x] Objective met
+        -   Grader comments: ~~you've got everything except an abstract. once you fill that in, you'll meet this objective.~~
         
 27. Use quarto R Markdown to compose an academic manuscript
 
@@ -390,7 +393,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
 
         -   [x] Objective attempt
         -   [x] Objective met
-        -   Grader comments:
+        -   Grader comments: nice pandoc table!
 
 28. Use inline R variables to replace static text
 
@@ -399,7 +402,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     3. Ideally, uses inline R references for *all* data-dependent text
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:
 
 29. Run inline R functions to render dynamic data-dependent text
@@ -407,7 +410,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     1. Uses inline R functions to render at least 3 unique data-dependent text outputs (e.g., performs rounding, calculates means, subtracts one list length from another, etc. -- inline rather than in a code chunk)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments: Fulfilling this counts for 28 also
         
 30. Use `knitr` and quarto to produce an APA7 formatted 1-click PDF manuscript, just need separate instances
@@ -418,7 +421,7 @@ Refer to the website for general tips on meeting these objectives and an FAQ.
     4. No additional steps are needed (e.g., finding data, determining necessary packages to install and load, running unsourced scripts, correcting aboslute paths)
 
         -   [x] Objective attempt
-        -   [ ] Objective met
+        -   [x] Objective met
         -   Grader comments:        
             1. Level 1 headings are reserved for # Abstract, # Methods, # Results, # Discussion, # References, and # Appendix.
             2. In APA7, there is no heading before the introduction.
@@ -462,8 +465,12 @@ Alternatively/additionally in mind some of the suggested ways to earn engagement
 
 All final projects are graded by Dr. Dowling. You will see your grade on Canvas separated into two categories: objective points and engagement points.
 
--   **Objective points:** 9/30
--   **Engagement points:** 2/10
--   **Total points:** 11/40
+-   **Objective points:** 29/30
+-   **Engagement points:** 10/10
+-   **Total points:** 39/40
 
-**Comments:** Nice work! See comments above for details about how to get the points you missed. In general, once you actually add the content itself it will be easier to demonstrate the objectives.
+**Comments:** 
+
+Final: Excellent job, Aspen! This is nearly flawless, exactly what I want to see from a final project. I'm really impressed with how much you were able to add in your efforts to find workaround for problems. It's annoying to have to mess with combining markdown and latex, but you figured it out and it looks great! I also noticed that you built a pandoc table and correctly labeled and cross-referenced it, which is something we spent about 10 seconds on in class. Really nice work!
+
+Nice work! See comments above for details about how to get the points you missed. In general, once you actually add the content itself it will be easier to demonstrate the objectives.
