@@ -22,8 +22,7 @@ author-note:
     financial-support: null
     authorship-agreements: null
     gratitude: null
-abstract: "This paper investigates the effects of conflicting reference points across different dimensions of utility on effort exertion. Reference-dependent preferences have become more prevalent in economic analysis, but models so far have assumed additive separability across different dimensions of utility, which implies that agents respond to reference points in each dimension in isolaton from one another. Challenging this assumption, I hypothesize that agents consider multi-dimensional reference points holistically: agents are less responsive to reference points if they have low probabilistic expectations of being able to concurrently achieve them and/or if they have difficulty reconciling them into a single baseline against which to evaluate outcomes. I
-refine the Koszegi-Rabin reference-dependent preference model and apply it to examine effort exertion under targets in different performance dimensions of a task. The original and refined model produce distinct predictions for optimal effort exertion, which I test in a real effort experiment. The experiment finds...which bears implications for..."
+abstract: "This paper investigates the effects of conflicting reference points across different dimensions of utility on effort exertion. Reference-dependent preferences have become more prevalent in economic analysis, but models so far have assumed additive separability across different dimensions of utility, which implies that agents respond to reference points in each dimension in isolaton from one another. Challenging this assumption, I hypothesize that agents consider multi-dimensional reference points holistically: agents are less responsive to reference points if they have low probabilistic expectations of being able to concurrently achieve them and/or if they have difficulty reconciling them into a single baseline against which to evaluate outcomes. I refine the Koszegi-Rabin reference-dependent preference model and apply it to examine effort exertion under targets in different performance dimensions of a task. The original and refined model produce distinct predictions for optimal effort exertion, which I test in a real effort experiment."
 keywords: [conflicting multi-dimensional reference points, probabilistic expectations, cognitive complexity]
 bibliography: bibliography.bib
 editor_options: 
@@ -376,6 +375,7 @@ To correct for multiple hypotheses testing, I use the Hommel method[^4] which fo
 
 ```{r}
 #| label: tbl-demographics-sumstats
+#| warning: false
 #| tbl-pos: H
 #| tbl-cap: "Summary statistics of covariate data"
 #| apa-note: "Significant p-values at 10% level are bolded"
@@ -508,7 +508,7 @@ reg_models <- list(target_reg_simple, target_reg)
 
 # Create regression table
 
-target_regtbl <- texreg(reg_models, stars = c(0.01, 0.05, 0.1), digits = 2, include.ci = FALSE,,
+target_regtbl <- texreg(reg_models, stars = c(0.01, 0.05, 0.1), digits = 2, include.ci = FALSE,
                         omit.coef = "genderprefer not to say|race|!raceother|age|income|econ|mouse",
                         custom.model.names = c("Without controls", "With controls"),
                         custom.header = list("Accuracy" = 1:2),
@@ -590,9 +590,9 @@ There are also certain design aspects which may not necessarily threaten interna
 
 Finally, I anticipate concerns about the external validity of the study due to the sampling and task setting. Findings from an undergraduate student sample may be less representative of decision-making processes with respect to multiple targets and effort exertion in the general population. The general public sample seeks to resolve this, but since they are recruited via RFCDR, there could still be selection bias as the composition of people who are exposed and responsive to the organisation could differ from those who are in the general population (e.g. wealthier, more educated, greater familiarity with behavioral research etc), and further the composition of people who elect into the study may differ from those who do not (e.g. less risk averse, lower opportunity cost of time, more motivated to participate in knowledge creation etc). As for the task setting, the abstract nature of the task may mean that how people respond to targets in the experiment does not reflect how they respond to targets in their actual jobs. Further exacerbating this disjunction is the short task duration and low stakes, which is unrealistic to how people perceive work in long-term employment. However, I would argue that the experiment investigates general decision-making processes which has broad transference across populations and domains, and even with limited generalisability still offers valuable insight into fundamental decision rules which can act as a springboard for thinking about and modelling more specific contexts. Furthermore, the short duration and low stakes can still parallel how people respond to such multi-dimensional targets at the task level of a job (e.g. a single ride for an Uber driver) which could be aggregated to the job level.
 
-## Conclusion
-
 <!--
+
+## Conclusion
 
 Summarise main findings and link back to model hypotheses and research questions
 
@@ -610,9 +610,3 @@ If findings support neither, evaluate the experiment
 
 ::: {#refs}
 :::
-
-\newpage
-
-# Appendix
-
-## Derivation of first-order conditions for experimental theoretical specification
