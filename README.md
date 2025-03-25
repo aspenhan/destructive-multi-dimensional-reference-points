@@ -25,7 +25,7 @@ across treatments are then analysed.
 Data collection is ongoing, with data being collected from an online Qualtrics survey.
 Key variables include task performance metrics, namely sets completed per minute
 and proportion of mistakes, demographic information, feedback on the task, and
-measures of loss aversion in the effort/ labor supply domain.
+measures of loss aversion in the effort exertion/ labor supply domain.
 
 All data is de-identified and provided with consent.
 
